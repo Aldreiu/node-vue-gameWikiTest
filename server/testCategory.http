@@ -1,0 +1,8 @@
+@url = http://localhost:5000/admin/api
+### 创建类型
+POST {{url}}/categories
+Content-Type: application/json
+
+{
+    "name":"test"
+}
