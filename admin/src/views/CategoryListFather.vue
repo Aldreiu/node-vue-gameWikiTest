@@ -1,18 +1,12 @@
 <template>
   <div>
-    <h1>分类列表</h1>
+    <h1>父级分类列表</h1>
     <el-table :data="items">
       <el-table-column
         prop="_id"
         label="ID"
         width="250"
       ></el-table-column>
-      <el-table-column
-        prop="parent.name"
-        label="上级分类"
-        width="140"
-      >
-      </el-table-column>
       <el-table-column
         prop="name"
         label="分类名称"
@@ -26,7 +20,7 @@
       >
         <template slot-scope="scope">
           <el-button
-            @click="handleClickModel(scope.row)"
+            @click="handleClickFatherModel(scope.row)"
             type="info"
             size="small"
           >查看</el-button>
@@ -38,7 +32,7 @@
           <el-button
             type="primary"
             size="small"
-            @click="$router.push(`/categories/edit/${scope.row._id}`)"
+            @click="$router.push(`/categories/createFather/edit/${scope.row._id}`)"
           >编辑共存</el-button>
           <el-button
             type="danger"
@@ -52,7 +46,7 @@
     <category-dialog
       ref="dialgComponent"
       :dialog-title="dialogTitle"
-      :item-model="categoryModel"
+      :item-model="categoryModelFather"
       :dialog-type="dialogType"
       :category-type="categoryType"
       @fetch="fetch"
@@ -62,7 +56,8 @@
   </div>
 </template>
 <script>
-import { getCategoryList, delCategoryModel, getCategoryModel } from '@/api/api'
+import {  getCategoryFatherList, getCategoryFatherModel,
+delCategoryFatherModel } from '@/api/api'
 import CategoryDialog from '../components/Category/CategoryDialog'
 export default {
   components: { CategoryDialog },
@@ -70,20 +65,20 @@ export default {
     return {
       items: [],
       // 查看的分类列表
-      categoryModel: {},
+      categoryModelFather: {},
 
       // 控制dialog显示
       // dialogShowModel:false,
       // 控制的dialog的标题
       dialogTitle: "",
       dialogType: null,//根据 true false 来判断是否显示 查看的 还是编辑
-      // 控制使用的是那种组件
-      categoryType:'CategoryList'
+      // 父类型的样式 弹框 false
+      categoryType: 'CategoryListFather'
     }
   },
   methods: {
     async fetch() {
-      const res = await getCategoryList();
+      const res = await getCategoryFatherList();
       this.items = res.data
     },
     // 弹框 开关
@@ -94,21 +89,15 @@ export default {
       })
     },
     // 查看单个分类详细信息
-    async handleClickModel(row) {
+    async handleClickFatherModel(row) {
       this.dialogOff();
       // 因为通过数据库查询是异步方法 所以使用async await  不然返回的是promise对象
-      // const res = await getCategoryModel(id);
-      // // console.log(res);
-      // this.model = res.data;
-
-      // 不通过数据进行 通过element自带的row
-      const {data:res} = await getCategoryModel(row._id);
-
+      const { data: res } = await getCategoryFatherModel(row._id);
       // if(status!==200){
       //   return this.$message.error("查询失败")
       // }
-      this.dialogTitle = "查看分类"
-      this.categoryModel = res;
+      this.dialogTitle = "查看父级分类"
+      this.categoryModelFather = res;
       this.dialogType = true;
 
     },
@@ -117,7 +106,7 @@ export default {
       if (id == 0) {
         this.dialogOff();
         this.dialogTitle = "编辑分类";
-        this.categoryModel = row;
+        this.categoryModelFather = row;
         this.dialogType = false;
       } else {
         this.$confirm(`此操作将永久删除该分类${row.name}，是否继续?`, '提示', {
@@ -125,7 +114,7 @@ export default {
           cancelButtonText: '取消',
           type: 'error'
         }).then(async () => {
-          await delCategoryModel(row._id);
+          await delCategoryFatherModel(row._id);
           this.$message({
             type: 'success',
             message: '删除成功！'
