@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>分类列表</h1>
+    <h1>装备列表</h1>
     <el-table :data="items">
       <el-table-column
         prop="_id"
@@ -8,16 +8,18 @@
         width="250"
       ></el-table-column>
       <el-table-column
-        prop="parent.name"
-        label="上级分类"
+        prop="name"
+        label="装备名称"
         width="140"
       >
       </el-table-column>
       <el-table-column
-        prop="name"
-        label="分类名称"
-        width="140"
+        prop="icon"
+        label="图片"
       >
+      <template slot-scope="scope">
+        <img :src="scope.row.icon" alt="" style="height:3rem">
+      </template>
       </el-table-column>
       <el-table-column
         fixed="right"
@@ -38,7 +40,7 @@
           <el-button
             type="primary"
             size="small"
-            @click="$router.push(`/categories/edit/${scope.row._id}`)"
+            @click="$router.push(`/items/edit/${scope.row._id}`)"
           >编辑共存</el-button>
           <el-button
             type="danger"
@@ -63,7 +65,7 @@
   </div>
 </template>
 <script>
-import { getCategoryList, delCategoryModel, getCategoryModel } from '@/api/api'
+import { getItemList, delItemModel, getItemModel } from '@/api/api'
 import CategoryDialog from '../components/Category/CategoryDialog'
 export default {
   components: { CategoryDialog },
@@ -75,17 +77,18 @@ export default {
 
       // 控制dialog显示
       // dialogShowModel:false,
-      // 控制的dialog的标题
+      // 控制的dialog 大的标题
       dialogTitle: "",
       dialogType: null,//根据 true false 来判断是否显示 查看的 还是编辑
-      // 控制使用的是那种组件
-      routerType: 'CategoryList',
-      dialogTitleA: '分类'
+      // 控制使用的是那种组件  这个名字没去好
+      routerType: 'ItemList',
+      // 控制标题
+      dialogTitleA: "装备名称"
     }
   },
   methods: {
     async fetch() {
-      const res = await getCategoryList();
+      const res = await getItemList();
       this.items = res.data
     },
     // 弹框 开关
@@ -104,12 +107,12 @@ export default {
       // this.model = res.data;
 
       // 不通过数据进行 通过element自带的row
-      const { data: res } = await getCategoryModel(row._id);
+      const { data: res } = await getItemModel(row._id);
 
       // if(status!==200){
       //   return this.$message.error("查询失败")
       // }
-      this.dialogTitle = "查看分类"
+      this.dialogTitle = "查看装备"
       this.categoryModel = res;
       this.dialogType = true;
 
@@ -118,16 +121,16 @@ export default {
     handleClickEditOrDel(row, id) {
       if (id == 0) {
         this.dialogOff();
-        this.dialogTitle = "编辑分类";
+        this.dialogTitle = "编辑装备";
         this.categoryModel = row;
         this.dialogType = false;
       } else {
-        this.$confirm(`此操作将永久删除该分类${row.name}，是否继续?`, '提示', {
+        this.$confirm(`此操作将永久删除该装备${row.name}，是否继续?`, '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
           type: 'error'
         }).then(async () => {
-          await delCategoryModel(row._id);
+          await delItemModel(row._id);
           this.$message({
             type: 'success',
             message: '删除成功！'

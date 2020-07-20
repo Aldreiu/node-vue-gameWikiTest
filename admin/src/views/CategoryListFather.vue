@@ -48,7 +48,8 @@
       :dialog-title="dialogTitle"
       :item-model="categoryModelFather"
       :dialog-type="dialogType"
-      :category-type="categoryType"
+      :router-type="routerType"
+      :dialog-titlea="dialogTitleA"
       @fetch="fetch"
     >
 
@@ -73,7 +74,8 @@ export default {
       dialogTitle: "",
       dialogType: null,//根据 true false 来判断是否显示 查看的 还是编辑
       // 父类型的样式 弹框 false
-      categoryType: 'CategoryListFather'
+      routerType: 'CategoryListFather',
+      dialogTitleA:'父级分类名称'
     }
   },
   methods: {

@@ -2,10 +2,15 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Main from '../views/Main.vue'
 
+// Category
 import CategoryEdit from '@/views/CategoryEdit'
 import CategoryList from '@/views/CategoryList'
+// CategoryFather
 import CategoryEditFather from '@/views/CategoryEditFather'
 import CategoryListFather from '@/views/CategoryListFather'
+// Item
+import ItemList from '@/views/ItemList'
+import ItemEdit from '@/views/ItemEdit'
 
 const originalPush = VueRouter.prototype.push
 VueRouter.prototype.push = function push(location){
@@ -28,6 +33,10 @@ const routes = [{
         component:CategoryEdit,
         props:true
       },
+      {
+        path: '/categories/list',
+        component: CategoryList
+      },
       // 父级分类
       {
         path:'/categories/createFather',
@@ -42,10 +51,21 @@ const routes = [{
         path:'/categories/listFather',
         component:CategoryListFather,
       },
+      // Item
+       {
+        path: '/items/create',
+        component: ItemEdit
+      },
       {
-        path: '/categories/list',
-        component: CategoryList
-      }
+        path:'/items/edit/:id',
+        component:ItemEdit,
+        props:true
+      },
+      {
+        path: '/items/list',
+        component: ItemList
+      },
+      
     ]
   }
   // {

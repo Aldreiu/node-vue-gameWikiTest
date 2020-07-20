@@ -31,12 +31,23 @@
           ></el-input>
         </el-form-item>
         <el-form-item
-          label="分类名称"
+          :label="dialogTitlea"
           prop="name"
         >
           <span v-if="dialogType">{{ itemModel.name }}</span>
           <el-input
             v-model="itemModel.name"
+            v-else
+          ></el-input>
+        </el-form-item>
+        <el-form-item
+          v-if="routerType==='ItemList'"
+          label="图片"
+          prop="name"
+        >
+          <span v-if="dialogType">{{ itemModel.icon }}</span>
+          <el-input
+            v-model="itemModel.icon"
             v-else
           ></el-input>
         </el-form-item>
@@ -62,7 +73,7 @@
 </template>
 
 <script>
-import { putCategoryModel, putCategoryFatherModel } from '@/api/api'
+import { putCategoryModel, putCategoryFatherModel,putItemModel } from '@/api/api'
 export default {
   name: "CategoryDialog",
   props: {
@@ -81,9 +92,14 @@ export default {
       default: false
     },
     // 控制编辑保存哪个 组件的标识
-    categoryType: {
+    routerType: {
       type: String,
       default: ''
+    },
+    // 控制编辑小标题
+    dialogTitlea:{
+      type:String,
+      default:''
     }
   },
   data() {
@@ -107,12 +123,15 @@ export default {
     },
     async dialogEditModel() {
       // 修改
-      if (this.categoryType === 'CategoryList') {
+      if (this.routerType === 'CategoryList') {
         await putCategoryModel(this.itemModel._id, this.itemModel);
         this.fetchCategoryListFather();
-      } else if (this.categoryType === 'CategoryListFather') {
+      } else if (this.routerType === 'CategoryListFather') {
         await putCategoryFatherModel(this.itemModel._id, this.itemModel);
         this.fetchCategoryListFather();
+      }else if (this.routerType === 'ItemList'){
+        console.log("你好");
+        await putItemModel(this.itemModel._id,this.itemModel)
       }
 
       this.$message({
