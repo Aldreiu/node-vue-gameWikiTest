@@ -11,10 +11,13 @@ import CategoryListFather from '@/views/CategoryListFather'
 // Item
 import ItemList from '@/views/ItemList'
 import ItemEdit from '@/views/ItemEdit'
+// Character
+import CharacterEdit from '@/views/CharacterEdit'
+import CharacterList from '@/views/CharacterList'
 
 const originalPush = VueRouter.prototype.push
-VueRouter.prototype.push = function push(location){
-  return originalPush.call(this,location).catch(err => err)
+VueRouter.prototype.push = function push(location) {
+  return originalPush.call(this, location).catch(err => err)
 }
 
 Vue.use(VueRouter)
@@ -23,15 +26,17 @@ const routes = [{
     path: '/',
     name: 'Main',
     component: Main,
-    children: [{
+    children: [
+      // 分类列表
+      {
         path: '/categories/create',
         component: CategoryEdit
       },
       // 使用router的 props进行对组件的解耦 是组件能够复用
       {
-        path:'/categories/edit/:id',
-        component:CategoryEdit,
-        props:true
+        path: '/categories/edit/:id',
+        component: CategoryEdit,
+        props: true
       },
       {
         path: '/categories/list',
@@ -39,33 +44,46 @@ const routes = [{
       },
       // 父级分类
       {
-        path:'/categories/createFather',
-        component:CategoryEditFather,
+        path: '/categories/createFather',
+        component: CategoryEditFather,
       },
       {
-        path:'/categories/createFather/edit/:id',
-        component:CategoryEditFather,
-        props:true
+        path: '/categories/createFather/edit/:id',
+        component: CategoryEditFather,
+        props: true
       },
       {
-        path:'/categories/listFather',
-        component:CategoryListFather,
+        path: '/categories/listFather',
+        component: CategoryListFather,
       },
       // Item
-       {
+      {
         path: '/items/create',
         component: ItemEdit
       },
       {
-        path:'/items/edit/:id',
-        component:ItemEdit,
-        props:true
+        path: '/items/edit/:id',
+        component: ItemEdit,
+        props: true
       },
       {
         path: '/items/list',
         component: ItemList
       },
-      
+      // character
+      {
+        path: '/characters/create',
+        component: CharacterEdit
+      },
+      {
+        path: '/characters/edit/:id',
+        component: CharacterEdit,
+        props: true
+      },
+      {
+        path: '/characters/list',
+        component: CharacterList
+      },
     ]
   }
   // {

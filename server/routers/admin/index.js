@@ -7,7 +7,7 @@ module.exports = (app) => {
     // 改成复用性 增删查改的 crud
     app.use("/admin/api/rest/:resource", async (req, res, next) => {
         // 我们严格规定一下 模型就叫模型名 请求的时候请求他的复数形式
-        // 这里使用 node一个工具 inflection
+        // 这里使用 node一个工具 inflection 变成不是复数形式
 
         // console.log(Model);
         // 这里包含 与上级分类关联  还有不是所有地方需要进行 populate 下面判断
@@ -21,7 +21,7 @@ module.exports = (app) => {
     const multer = require('multer')
     // 目标地址
     const upload = multer({dest:__dirname + '/../../uploads'})
-    app.post('/admin/api/upLoad',upload.single('icon'),async (req,res)=>{
+    app.post('/admin/api/upLoad',upload.single('file'),async (req,res)=>{
         // express本身获取不了上传文件数据
         // 使用multer来处理上传文件
         const icon = req.file

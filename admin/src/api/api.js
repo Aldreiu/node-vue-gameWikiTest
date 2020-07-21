@@ -51,3 +51,15 @@ export const putItemModel = (id, model) => http.put(`rest/items/${id}`, model)
 
 // 根据id 删除对应装备
 export const delItemModel = (id) => http.delete(`/rest/items/${id}`)
+
+//  =============== Character =================
+// 新建角色
+export const postCharacter = (model) => http.post('rest/characters', model)
+// 获取所有角色
+export const getCharacterList = () => http.get('rest/characters')
+// 根据id获得相应角色
+export const getCharacterModel = (id) => http.get(`rest/characters/${id}`)
+// 根据id 进行修改角色
+export const PutCharacterModel = (id, model) => http.put(`rest/characters/${id}`, model)
+// 根据id 删除对应角色
+export const delCharacterModel = (id) => http.delete(`rest/characters/${id}`)

@@ -23,6 +23,11 @@
             <el-menu-item index="/items/create">新建装备</el-menu-item>
             <el-menu-item index="/items/list">装备列表</el-menu-item>
           </el-menu-item-group>
+          <el-menu-item-group>
+            <template slot="title">角色</template>
+            <el-menu-item index="/characters/create">新建角色</el-menu-item>
+            <el-menu-item index="/characters/list">角色列表</el-menu-item>
+          </el-menu-item-group>
         </el-submenu>
       </el-menu>
     </el-aside>

@@ -1,14 +1,14 @@
 <template>
   <div class="about">
-    <h1>{{id?'编辑':'新建'}}装备</h1>
+    <h1>{{id?'编辑':'新建'}}角色</h1>
     <el-form
       label-width="70px"
       @submit.native.prevent="save"
     >
-      <el-form-item label="装备名称">
+      <el-form-item label="角色名称">
         <el-input v-model="model.name"></el-input>
       </el-form-item>
-      <el-form-item label="装备图片">
+      <el-form-item label="角色头像">
         <el-upload
           class="avatar-uploader"
           :action="$http.defaults.baseURL + '/upload'"
@@ -17,8 +17,8 @@
           name="file"
         >
           <img
-            v-if="model.icon"
-            :src="model.icon"
+            v-if="model.avatar"
+            :src="model.avatar"
             class="avatar"
           >
           <i
@@ -38,26 +38,26 @@
 </template>
 
 <script>
-import { putItemModel, postItem, getItemModel } from '@/api/api'
+import { PutCharacterModel, postCharacter, getCharacterModel } from '@/api/api'
 export default {
   props: ['id'],
   data() {
     return {
-      model: {},
-      parents: []
+      model: {
+        name: '',
+        avatar: ''
+      },
     }
   },
   methods: {
     afterUpload(res) {
-      console.log(res);
-      // this.model.icon = res.url
-      // 因为模型没有定义子级 会形成数据响应式问题 会可能付不上   自己加的话 使用set 显示复值
-      this.$set(this.model, 'icon', res.url)
+        console.log(res);
+      this.model.avatar = res.url
     },
     // 展示数据
     async fetch() {
       // const res = await this.$http.get(`categories/${this.id}`);
-      const res = await getItemModel(this.id)
+      const res = await getCharacterModel(this.id)
       this.model = res.data;
     },
 
@@ -68,7 +68,7 @@ export default {
         // await this.$http.put(`categories/${this.id}`, this.model);
         // 因为通过解耦公用一个组件
         // 通过id 然后进行修改
-        await putItemModel(this.id, this.model)
+        await PutCharacterModel(this.id, this.model)
         this.$message({
           type: 'success',
           message: '修改成功'
@@ -76,14 +76,14 @@ export default {
       } else {
         // await this.$http.post('categories', this.model);
         // 创建分类
-        await postItem(this.model)
+        await postCharacter(this.model)
         this.$message({
           type: 'success',
           message: '添加成功'
         })
       }
 
-      this.$router.push('/items/list')
+      this.$router.push('/characters/list')
     }
   },
   created() {
