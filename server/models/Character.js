@@ -13,7 +13,7 @@ const schema = new mongoose.Schema({
     title: {
         type: String
     },
-    // 信息 通过分类进行添加
+    // 信息 通过分类进行添加 得意武器
     categories:[
         {type:mongoose.Schema.Types.ObjectId,ref:'Category'}
     ],
@@ -21,6 +21,14 @@ const schema = new mongoose.Schema({
     hpandattack:{
         hp:{type:Number},
         attack:{type:Number}
+    },
+    // 属性
+    attribute:{
+        type:mongoose.Schema.Types.ObjectId,ref:'Category'
+    },
+    // 种族
+    race:{
+        type:mongoose.Schema.Types.ObjectId,ref:'Category'
     }
 })
 
