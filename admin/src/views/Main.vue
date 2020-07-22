@@ -24,6 +24,11 @@
             <el-menu-item index="/items/list">装备列表</el-menu-item>
           </el-menu-item-group>
           <el-menu-item-group>
+            <template slot="title">物品</template>
+            <el-menu-item index="/articles/create">新建物品材料</el-menu-item>
+            <el-menu-item index="/articles/list">物品材料列表</el-menu-item>
+          </el-menu-item-group>
+          <el-menu-item-group>
             <template slot="title">角色</template>
             <el-menu-item index="/characters/create">新建角色</el-menu-item>
             <el-menu-item index="/characters/list">角色列表</el-menu-item>
@@ -45,7 +50,7 @@
             <el-dropdown-item>删除</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
-        <span>王小虎</span>
+        <span>Aldreiu</span>
       </el-header>
 
       <el-main>

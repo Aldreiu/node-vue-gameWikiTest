@@ -52,6 +52,22 @@ export const putItemModel = (id, model) => http.put(`rest/items/${id}`, model)
 // 根据id 删除对应装备
 export const delItemModel = (id) => http.delete(`/rest/items/${id}`)
 
+//  =============== Article =================
+// 新建物品材料
+export const postArticle = (model) => http.post('rest/articles', model)
+
+// 获取所有物品材料
+export const getArticleList = () => http.get('rest/articles')
+
+// 根据id获取相应的物品材料
+export const getArticleModel = (id) => http.get(`rest/articles/${id}`)
+
+// 根据id 进行修改
+export const putArticleModel = (id, model) => http.put(`rest/articles/${id}`, model)
+
+// 根据id 删除对应物品材料
+export const delArticleModel = (id) => http.delete(`/rest/articles/${id}`)
+
 //  =============== Character =================
 // 新建角色
 export const postCharacter = (model) => http.post('rest/characters', model)

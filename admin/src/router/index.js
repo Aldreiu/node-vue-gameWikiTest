@@ -14,6 +14,9 @@ import ItemEdit from '@/views/ItemEdit'
 // Character
 import CharacterEdit from '@/views/CharacterEdit'
 import CharacterList from '@/views/CharacterList'
+// Article
+import ArticleEdit from '@/views/ArticleEdit'
+import ArticleList from '@/views/ArticleList'
 
 const originalPush = VueRouter.prototype.push
 VueRouter.prototype.push = function push(location) {
@@ -69,6 +72,20 @@ const routes = [{
       {
         path: '/items/list',
         component: ItemList
+      },
+      // Article
+      {
+        path: '/articles/create',
+        component: ArticleEdit
+      },
+      {
+        path: '/articles/edit/:id',
+        component: ArticleEdit,
+        props: true
+      },
+      {
+        path: '/articles/list',
+        component: ArticleList
       },
       // character
       {

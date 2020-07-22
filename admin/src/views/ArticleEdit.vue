@@ -1,14 +1,14 @@
 <template>
   <div class="about">
-    <h1>{{id?'编辑':'新建'}}装备</h1>
+    <h1>{{id?'编辑':'新建'}}物品材料</h1>
     <el-form
       label-width="70px"
       @submit.native.prevent="save"
     >
-      <el-form-item label="装备名称">
+      <el-form-item label="物品材料">
         <el-input v-model="model.name"></el-input>
       </el-form-item>
-      <el-form-item label="装备图片">
+      <el-form-item label="物品材料图片">
         <el-upload
           class="avatar-uploader"
           :action="$http.defaults.baseURL + '/upload'"
@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import { putItemModel, postItem, getItemModel } from '@/api/api'
+import { postArticle, putArticleModel, getArticleModel } from '@/api/api'
 export default {
   props: ['id'],
   data() {
@@ -57,12 +57,8 @@ export default {
     // 展示数据
     async fetch() {
       // const res = await this.$http.get(`categories/${this.id}`);
-      const res = await getItemModel(this.id)
+      const res = await getArticleModel(this.id)
       this.model = res.data;
-    },
-    // 新建数据
-    fetchCreate(){
-      this.model={}
     },
 
     // 下次看到这个注释 记得封装axios 顺便把所有的接口进行封装成一个文件   先偷个懒(已完成)
@@ -72,7 +68,7 @@ export default {
         // await this.$http.put(`categories/${this.id}`, this.model);
         // 因为通过解耦公用一个组件
         // 通过id 然后进行修改
-        await putItemModel(this.id, this.model)
+        await putArticleModel(this.id, this.model)
         this.$message({
           type: 'success',
           message: '修改成功'
@@ -80,20 +76,14 @@ export default {
       } else {
         // await this.$http.post('categories', this.model);
         // 创建分类
-        await postItem(this.model)
+        await postArticle(this.model)
         this.$message({
           type: 'success',
           message: '添加成功'
         })
       }
 
-      this.$router.push('/items/list')
-    }
-  },
-  watch: {
-    '$route.path': function () {
-      // alert(newVal + '-----' + oldVal)
-      this.fetchCreate()
+      this.$router.push('/articles/list')
     }
   },
   created() {

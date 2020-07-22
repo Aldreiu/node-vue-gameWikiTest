@@ -50,7 +50,10 @@ router.get("/", async (req, res) => {
     }
 
     // setOptions设置查询项
-    const items = await req.Model.find().setOptions(queryOptions).populate('parent').limit(10)
+    // limit做分页
+    // const items = await req.Model.find().setOptions(queryOptions).limit(10)
+    const items = await req.Model.find().setOptions(queryOptions)
+    
     res.send(items);
 })
 
@@ -65,6 +68,8 @@ router.get("/:id", async (req, res) => {
     const queryOptions = {}
     if (req.Model.modelName === 'Category') {
         queryOptions.populate = 'parent'
+    }else if(req.Model.modelName === 'Character'){
+        queryOptions.populate = 'attribute'
     }
     const model = await req.Model.findById(req.params.id).setOptions(queryOptions)
     res.send(model);
