@@ -2,15 +2,18 @@
   <el-container style="height: 100vh; border: 1px solid #eee">
     <el-aside
       width="200px"
-      style="background-color: rgb(238, 241, 246)"
+      style="height:100%;background-color:#545c64"
     >
       <el-menu
         router
         :default-openeds="['1']"
         :default-active="$route.path"
+        background-color="#545c64"
+        text-color="#fff"
+        active-text-color="#ffd04b"
       >
         <el-submenu index="1">
-          <template slot="title"><i class="el-icon-message"></i>内容管理</template>
+          <template slot="title"><i class="el-icon-s-grid"></i>内容管理</template>
           <el-menu-item-group>
             <template slot="title">分类</template>
             <el-menu-item index="/categories/createFather">新建父级分类</el-menu-item>
@@ -37,8 +40,8 @@
       </el-menu>
     </el-aside>
 
-    <el-container>
-      <el-header style="text-align: right; font-size: 12px">
+    <el-container text-color="#fff">
+      <el-header style="text-align: right; font-size: 12px;background-color:#545c6">
         <el-dropdown>
           <i
             class="el-icon-setting"
@@ -62,8 +65,8 @@
 
 <style>
 .el-header {
-  background-color: #b3c0d1;
-  color: #333;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
   line-height: 60px;
 }
 

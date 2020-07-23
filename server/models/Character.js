@@ -109,7 +109,12 @@ const schema = new mongoose.Schema({
         // 技能介绍
         description: {
             type: String
+        },
+        // 控制是 主动true  被动就false
+        passive:{
+            type:String
         }
+        // 使用间隔  初期和多少级  想偷下懒日后在补 =，=
 
     }],
     // 控制是否有 最终上限这样才有 item5

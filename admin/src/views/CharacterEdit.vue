@@ -5,123 +5,257 @@
       label-width="150px"
       @submit.native.prevent="save"
     >
-      <el-form-item label="角色名称">
-        <el-input v-model="model.name"></el-input>
-      </el-form-item>
-      <el-form-item label="角色称号">
-        <el-input v-model="model.title"></el-input>
-      </el-form-item>
-      <el-form-item label="角色头像">
-        <el-upload
-          class="avatar-uploader"
-          :action="$http.defaults.baseURL + '/upload'"
-          :show-file-list="false"
-          :on-success="afterUpload"
-          name="file"
-        >
-          <img
-            v-if="model.avatar"
-            :src="model.avatar"
-            class="avatar"
-          >
-          <i
-            v-else
-            class="el-icon-plus avatar-uploader-icon"
-          ></i>
-        </el-upload>
-      </el-form-item>
-      <el-form-item label="角色立绘">
-        <el-upload
-          class="avatar-uploader"
-          :action="$http.defaults.baseURL + '/upload'"
-          :show-file-list="false"
-          :on-success="afterUploadDrawing"
-          name="file"
-        >
-          <img
-            v-if="model.drawing"
-            :src="model.drawing"
-            class="avatar"
-          >
-          <i
-            v-else
-            class="el-icon-plus avatar-uploader-icon"
-          ></i>
-        </el-upload>
-      </el-form-item>
-      <el-form-item label="角色属性">
-        <el-select
-          v-model="model.attribute"
-          placeholder="请选择"
-        >
-          <el-option
-            v-for="item of attributes"
-            :key="item._id"
-            :label="item.name"
-            :value="item._id"
-          >
+      <el-tabs type="border-card">
+        <!-- 基础信息 -->
+        <el-tab-pane label="基础信息">
+          <el-form-item label="角色名称">
+            <el-input v-model="model.name"></el-input>
+          </el-form-item>
+          <el-form-item label="角色称号">
+            <el-input v-model="model.title"></el-input>
+          </el-form-item>
+          <el-form-item label="角色头像">
+            <el-upload
+              class="avatar-uploader"
+              :action="$http.defaults.baseURL + '/upload'"
+              :show-file-list="false"
+              :on-success="afterUpload"
+              name="file"
+            >
+              <img
+                v-if="model.avatar"
+                :src="model.avatar"
+                class="avatar"
+              >
+              <i
+                v-else
+                class="el-icon-plus avatar-uploader-icon"
+              ></i>
+            </el-upload>
+          </el-form-item>
+          <el-form-item label="角色立绘">
+            <el-upload
+              class="avatar-uploader"
+              :action="$http.defaults.baseURL + '/upload'"
+              :show-file-list="false"
+              :on-success="afterUploadDrawing"
+              name="file"
+            >
+              <img
+                v-if="model.drawing"
+                :src="model.drawing"
+                class="avatar"
+              >
+              <i
+                v-else
+                class="el-icon-plus avatar-uploader-icon"
+              ></i>
+            </el-upload>
+          </el-form-item>
+          <el-form-item label="角色属性">
+            <el-select
+              v-model="model.attribute"
+              placeholder="请选择"
+            >
+              <el-option
+                v-for="item of attributes"
+                :key="item._id"
+                :label="item.name"
+                :value="item._id"
+              >
 
-          </el-option>
-        </el-select>
-      </el-form-item>
-      <el-form-item label="角色得意武器">
-        <el-select
-          v-model="model.categories"
-          placeholder="请选择"
-          multiple
-        >
-          <el-option
-            v-for="item of categories"
-            :key="item._id"
-            :label="item.name"
-            :value="item._id"
-          >
+              </el-option>
+            </el-select>
+          </el-form-item>
+          <el-form-item label="角色得意武器">
+            <el-select
+              v-model="model.categories"
+              placeholder="请选择"
+              multiple
+            >
+              <el-option
+                v-for="item of categories"
+                :key="item._id"
+                :label="item.name"
+                :value="item._id"
+              >
 
-          </el-option>
-        </el-select>
-      </el-form-item>
-      <el-form-item label="角色HP和攻击力">
-        <el-input
-          v-model="model.hpandattack.hp"
-          class="input_left"
-          placeholder="HP"
-        ></el-input>
-        <el-input
-          v-model="model.hpandattack.attack"
-          placeholder="攻击力"
-        ></el-input>
-      </el-form-item>
-      <el-form-item label="种族">
-        <el-select
-          v-model="model.race"
-          placeholder="请选择种族"
-        >
-          <el-option
-            v-for="item of races"
-            :key="item._id"
-            :label="item.name"
-            :value="item._id"
-          >
+              </el-option>
+            </el-select>
+          </el-form-item>
+          <el-form-item label="角色HP和攻击力">
+            <el-input
+              v-model="model.hpandattack.hp"
+              class="input_left"
+              placeholder="HP"
+            ></el-input>
+            <el-input
+              v-model="model.hpandattack.attack"
+              placeholder="攻击力"
+            ></el-input>
+          </el-form-item>
+          <el-form-item label="种族">
+            <el-select
+              v-model="model.race"
+              placeholder="请选择种族"
+            >
+              <el-option
+                v-for="item of races"
+                :key="item._id"
+                :label="item.name"
+                :value="item._id"
+              >
 
-          </el-option>
-        </el-select>
-      </el-form-item>
-      <el-form-item label="共享角色皮肤">
-        <el-select
-          v-model="model.character"
-          placeholder="请选择共享角色"
-          multiple
-        >
-          <el-option
-            v-for="item of characteies"
-            :key="item._id"
-            :label="item.name"
-            :value="item._id"
-          >
+              </el-option>
+            </el-select>
+          </el-form-item>
+          <!-- otherinfo 其他信息 -->
+          <el-form-item label="日文名">
+            <el-input
+              v-model="model.otherinfo.japanName"
+              placeholder="HP"
+            ></el-input>
+          </el-form-item>
+          <el-form-item label="英文名">
+            <el-input
+              v-model="model.otherinfo.enName"
+              placeholder="HP"
+            ></el-input>
+          </el-form-item>
+          <el-form-item label="常用昵称(外号)">
+            <el-input
+              v-model="model.otherinfo.commentName"
+              placeholder="HP"
+            ></el-input>
+          </el-form-item>
+          <el-form-item label="露莉亚笔记">
+            <el-input
+              type="textarea"
+              v-model="model.otherinfo.notepad"
+              placeholder="露莉亚笔记"
+            ></el-input>
+          </el-form-item>
+          <el-form-item label="年龄">
+            <el-input
+              v-model="model.otherinfo.age"
+              placeholder="HP"
+            ></el-input>
+          </el-form-item>
+          <el-form-item label="身高">
+            <el-input
+              v-model="model.otherinfo.height"
+              placeholder="HP"
+            ></el-input>
+          </el-form-item>
+          <el-form-item label="声优">
+            <el-input
+              v-model="model.otherinfo.cv"
+              placeholder="HP"
+            ></el-input>
+          </el-form-item>
+          <el-form-item label="兴趣">
+            <el-input
+              v-model="model.otherinfo.interest"
+              placeholder="HP"
+            ></el-input>
+          </el-form-item>
+          <el-form-item label="喜好">
+            <el-input
+              v-model="model.otherinfo.hobby"
+              placeholder="HP"
+            ></el-input>
+          </el-form-item>
+          <el-form-item label="不擅长">
+            <el-input
+              v-model="model.otherinfo.nogoodat"
+              placeholder="HP"
+            ></el-input>
+          </el-form-item>
+          <!-- otherinfo 结束 -->
+          <el-form-item label="共享角色皮肤">
+            <el-select
+              v-model="model.character"
+              placeholder="请选择共享角色"
+              multiple
+            >
+              <el-option
+                v-for="item of characteies"
+                :key="item._id"
+                :label="item.name"
+                :value="item._id"
+              >
 
-          </el-option>
-        </el-select>
-      </el-form-item>
+              </el-option>
+            </el-select>
+          </el-form-item>
+        </el-tab-pane>
+        <!-- 技能 -->
+        <el-tab-pane label="技能">
+          <el-button @click="model.skills.push({})">
+            <i class="el-icon-plus"></i>添加技能
+          </el-button>
+          <el-button
+            type="danger"
+            @click="model.skills.pop()"
+          >
+            <i class="el-icon-delete"></i>删除技能
+          </el-button>
+          <el-row
+            type="flex"
+            style="flex-wrap:wrap; margin-top:15px; "
+          >
+            <el-col
+              :md="12"
+              v-for="(item,i) in model.skills"
+              :key="i"
+            >
+              <el-form-item label="主动/被动">
+                <el-select
+                  v-model="item.passive"
+                  placeholder="请选择"
+                >
+                  <el-option
+                    v-for="item in attributes"
+                    :key="item._id"
+                    :label="item.name"
+                    :value="item.name"
+                  >
+                  </el-option>
+                </el-select>
+              </el-form-item>
+              <el-form-item label="技能图标">
+                <el-upload
+                  class="avatar-uploader"
+                  :action="$http.defaults.baseURL + '/upload'"
+                  :show-file-list="false"
+                  :on-success="res => $set(item,'icon',res.url)"
+                  name="file"
+                >
+                  <img
+                    v-if="item.icon"
+                    :src="item.icon"
+                    class="avatar"
+                  >
+                  <i
+                    v-else
+                    class="el-icon-plus avatar-uploader-icon"
+                  ></i>
+                </el-upload>
+              </el-form-item>
+              <el-form-item label="技能名称">
+                <el-input v-model="item.name"></el-input>
+              </el-form-item>
+              <el-form-item label="技能描述">
+                <el-input
+                  type="textarea"
+                  v-model="item.description"
+                ></el-input>
+              </el-form-item>
+            </el-col>
+          </el-row>
+        </el-tab-pane>
+      </el-tabs>
+
       <el-form-item>
         <el-button
           type="primary"
@@ -148,7 +282,11 @@ export default {
         // 原因因为多层数据 最开始没有数据的时候是underfind不会报错但是 多层的话underfind.什么就会报错  就可以在上方进行判断 是否拿到数据 就去判断是否为空 之前的做法  这里我就去结合实际情况 因为这里的数据结构写好了 但是通过接口请求过来的数据会替换掉这的model   所以使用 Object.assign 通过将可枚举的数值从一个复制到目标对象 这样会得到 请求的数据结构加上这里定义的数据结构  其实还有一种方式利用扩展运算符 这样服务端接口就不会影响
         hpandattack: {},
         // 共享角色
-        partners: []
+        partners: [],
+        // 其他细腻
+        otherinfo: {},
+        // 技能
+        skills: []
 
       },
       // 属性选项
@@ -172,6 +310,7 @@ export default {
       // console.log(res);
       this.model.drawing = res.url
     },
+
     // 展示数据
     async fetch() {
       // const res = await this.$http.get(`categories/${this.id}`);
@@ -248,6 +387,13 @@ export default {
 </script>
 
 <style>
+.el-col{
+  margin:40px; border-bottom:1px solid rgba(0, 0, 0, 0.2);
+}
+
+.el-button {
+  margin-top: 0.5rem;
+}
 .avatar-uploader .el-upload {
   border: 1px dashed #d9d9d9;
   border-radius: 6px;
