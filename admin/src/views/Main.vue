@@ -2,7 +2,7 @@
   <el-container style="height: 100vh; border: 1px solid #eee">
     <el-aside
       width="200px"
-      style="height:100%;background-color:#545c64"
+      style="height:100%;background-color:#545c64;overflow:hidden;"
     >
       <el-menu
         router
@@ -36,6 +36,11 @@
             <el-menu-item index="/characters/create">新建角色</el-menu-item>
             <el-menu-item index="/characters/list">角色列表</el-menu-item>
           </el-menu-item-group>
+          <el-menu-item-group>
+            <template slot="title">文章</template>
+            <el-menu-item index="/essays/create">新建文章</el-menu-item>
+            <el-menu-item index="/essays/list">文章列表</el-menu-item>
+          </el-menu-item-group>
         </el-submenu>
       </el-menu>
     </el-aside>
@@ -64,6 +69,12 @@
 </template>
 
 <style>
+.el-menu {
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: 100vh;
+  margin-right: -1em;
+}
 .el-header {
   background-color: rgba(0, 0, 0, 0.7);
   color: #fff;

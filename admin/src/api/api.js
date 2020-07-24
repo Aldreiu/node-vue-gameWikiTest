@@ -79,3 +79,15 @@ export const getCharacterModel = (id) => http.get(`rest/characters/${id}`)
 export const PutCharacterModel = (id, model) => http.put(`rest/characters/${id}`, model)
 // 根据id 删除对应角色
 export const delCharacterModel = (id) => http.delete(`rest/characters/${id}`)
+
+//  =============== Essay =================
+// 新建文章
+export const postEssay = (model) => http.post('rest/essays', model)
+// 获取所有文章
+export const getEssayList = () => http.get('rest/essays')
+// 根据id获得相应文章
+export const getEssayModel = (id) => http.get(`rest/essays/${id}`)
+// 根据id 进行修改文章
+export const PutEssayrModel = (id, model) => http.put(`rest/essays/${id}`, model)
+// 根据id 删除对应文章
+export const delEssayModel = (id) => http.delete(`rest/essays/${id}`)

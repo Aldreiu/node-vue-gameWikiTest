@@ -198,7 +198,7 @@
             type="danger"
             @click="model.skills.pop()"
           >
-            <i class="el-icon-delete"></i>删除技能
+            <i class="el-icon-delete"></i>删除最后一个技能
           </el-button>
           <el-row
             type="flex"
@@ -250,6 +250,7 @@
                   type="textarea"
                   v-model="item.description"
                 ></el-input>
+                <el-button type="danger" class="skills-button" @click="model.skills.splice(i,1)"><i class="el-icon-delete"></i>删除当前技能</el-button>
               </el-form-item>
             </el-col>
           </el-row>
@@ -387,8 +388,12 @@ export default {
 </script>
 
 <style>
-.el-col{
-  margin:40px; border-bottom:1px solid rgba(0, 0, 0, 0.2);
+.el-button.skills-button{
+  margin-top: 2rem;
+}
+.el-col {
+  margin: 40px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 .el-button {
