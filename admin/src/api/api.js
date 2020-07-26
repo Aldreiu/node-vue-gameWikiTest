@@ -91,3 +91,15 @@ export const getEssayModel = (id) => http.get(`rest/essays/${id}`)
 export const PutEssayrModel = (id, model) => http.put(`rest/essays/${id}`, model)
 // 根据id 删除对应文章
 export const delEssayModel = (id) => http.delete(`rest/essays/${id}`)
+
+// =============== Ad =================
+// 新建广告
+export const postAd = (model) => http.post('rest/ads', model)
+// 获取所有广告
+export const getAdList = () => http.get('rest/ads')
+// 根据id获得相应广告
+export const getAdModel = (id) => http.get(`rest/ads/${id}`)
+// 根据id 进行修改广告
+export const PutAdrModel = (id, model) => http.put(`rest/ads/${id}`, model)
+// 根据id 删除对应广告
+export const delAdModel = (id) => http.delete(`rest/ads/${id}`)

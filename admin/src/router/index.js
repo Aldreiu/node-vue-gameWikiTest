@@ -20,6 +20,9 @@ import ArticleList from '@/views/ArticleList'
 // Essay
 import EssayList from '@/views/EssayList'
 import EssayEdit from '@/views/EssayEdit'
+// Ad
+import AdList from '@/views/AdList'
+import AdEdit from '@/views/AdEdit'
 
 const originalPush = VueRouter.prototype.push
 VueRouter.prototype.push = function push(location) {
@@ -117,6 +120,20 @@ const routes = [{
       {
         path: '/essays/list',
         component: EssayList
+      },
+      // ad
+      {
+        path: '/ads/create',
+        component: AdEdit
+      },
+      {
+        path: '/ads/edit/:id',
+        component: AdEdit,
+        props: true
+      },
+      {
+        path: '/ads/list',
+        component: AdList
       },
     ]
   }

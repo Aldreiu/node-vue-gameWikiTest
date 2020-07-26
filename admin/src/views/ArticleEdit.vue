@@ -2,7 +2,7 @@
   <div class="about">
     <h1>{{id?'编辑':'新建'}}物品材料</h1>
     <el-form
-      label-width="70px"
+      label-width="150px"
       @submit.native.prevent="save"
     >
       <el-form-item label="物品材料">
@@ -111,9 +111,9 @@ export default {
   line-height: 178px;
   text-align: center;
 }
-.avatar {
-  width: 178px;
-  height: 178px;
+.avatar-uploader .avatar {
+  width: 100px;
+  height: 100px;
   display: block;
 }
 </style>
