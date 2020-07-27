@@ -1,5 +1,7 @@
 import axios from "axios";
 import Vue from "vue";
+import router from "./router"
+
 
 const http = axios.create({
   baseURL: "http://localhost:5000/admin/api",
@@ -8,7 +10,10 @@ const http = axios.create({
 http.interceptors.request.use(
   function(config) {
     console.log(localStorage.token);
-    config.headers.Authorization = 'Bearer '+localStorage.token;
+    // 判断前端是否有token
+    if(localStorage.token){
+      config.headers.Authorization = 'Bearer '+(localStorage.token || '');
+    }
     // 在发送请求之前做些什么
     return config;
   },
@@ -28,10 +33,19 @@ http.interceptors.response.use(
         type: "error",
         message: err.response.data.message,
       });
+      console.log(err.response);
+      if(err.response.status === 401){
+        console.log("ik");
+        console.log(router);
+        router.push('/login')
+        console.log("12312312 fuck");
+      }
+      // console.log(err.response.data.message);
+      return Promise.reject(err);
     }
-    // console.log(err.response.data.message);
-    return Promise.reject(err);
-  }
+    }
+    // 如果响应过来401说明要重新登陆
+    
 );
 
 export default http;
