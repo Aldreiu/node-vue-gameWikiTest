@@ -61,11 +61,12 @@ module.exports = (app) => {
         // 校验密码
         // bcr自带的校验密码 同步
         const isValid = require('bcrypt').compareSync(password, user.password)
-        if (!isValid) {
-            return res.status(422).send({
-                message: '密码错误'
-            })
-        }
+        // if (!isValid) {
+        //     return res.status(422).send({
+        //         message: '密码错误'
+        //     })
+        // }
+        assert(isValid,422,"密码错误")
         // 返回token
 
         const token = jwt.sign({
@@ -75,5 +76,13 @@ module.exports = (app) => {
             token,
             username: user.username
         });
+    })
+
+    // 错误处理
+    app.use(async(err,req,res,next) =>{
+        console.log(err.message);
+        res.status(err.statusCode || 500).send({
+            message:err.message
+        })
     })
 }
