@@ -12,16 +12,17 @@
         <el-row type="flex" style="flex-wrap:wrap;">
           <el-col :md="12" class="adcol" v-for="(item,i) in model.items" :key="i">
             <el-form-item label="广告URL">
-              <el-input v-model="model.items.url" style="width:200px"></el-input>
+              <el-input v-model="item.url" style="width:200px"></el-input>
             </el-form-item>
             <el-form-item label="广告图片" style="margin-top:10px">
               <el-upload
                 class="avatar-uploader"
                 :action="$http.defaults.baseURL + '/upload'"
                 :show-file-list="false"
-                :on-success="handleSuccess"
+                :on-success="res => $set(item,'image',res.url)"
+                name="file"
               >
-                <img v-if="model.items.image" :src="model.items.image" class="adimg" />
+                <img v-if="item.image" :src="item.image" class="adimg" />
                 <i v-else class="el-icon-plus avatar-uploader-icon"></i>
               </el-upload>
             </el-form-item>
@@ -48,9 +49,9 @@ export default {
     };
   },
   methods: {
-    handleSuccess(res) {
-      this.model.items.image = res.url;
-    },
+    // handleSuccess(res) {
+    //   this.model.items.image = res.url;
+    // },
 
     async fetch() {
       const res = await getAdModel(this.id);
@@ -86,17 +87,17 @@ export default {
 </script>
 
 <style scoped>
-/* .el-form-item.adpic{
-    margin-top: 10px;
-} */
+
+.avatar-uploader .adimg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
 
 .el-col.adcol {
   padding: 25px;
-  border: 1px solid;
+  border: 1px solid #DCDFE6;
+  border-radius: 4px;
 }
 
-.el-upload .adimg {
-  width: 150px;
-  height: 150px;
-}
 </style>

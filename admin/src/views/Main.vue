@@ -2,18 +2,18 @@
   <el-container style="height: 100vh; border: 1px solid #eee">
     <el-aside
       width="200px"
-      style="height:100%;background-color:#545c64;overflow:hidden;"
+      style="height:100vh;background-color:#545c64;overflow:hidden;"
     >
       <el-menu
         router
-        :default-openeds="['1']"
+        :default-openeds="['4']"
         :default-active="$route.path"
         background-color="#545c64"
         text-color="#fff"
         active-text-color="#ffd04b"
       >
         <el-submenu index="1">
-          <template slot="title"><i class="el-icon-s-grid"></i>内容管理</template>
+          <template slot="title"><i class="el-icon-s-grid"></i>分离管理</template>
           <el-menu-item-group>
             <template slot="title">分类</template>
             <el-menu-item index="/categories/createFather">新建父级分类</el-menu-item>
@@ -21,6 +21,9 @@
             <el-menu-item index="/categories/create">新建子分类</el-menu-item>
             <el-menu-item index="/categories/list">分类列表</el-menu-item>
           </el-menu-item-group>
+        </el-submenu>
+        <el-submenu index="2">
+          <template slot="title"><i class="el-icon-lock"></i>内容管理</template>
           <el-menu-item-group>
             <template slot="title">装备</template>
             <el-menu-item index="/items/create">新建装备</el-menu-item>
@@ -36,6 +39,9 @@
             <el-menu-item index="/characters/create">新建角色</el-menu-item>
             <el-menu-item index="/characters/list">角色列表</el-menu-item>
           </el-menu-item-group>
+        </el-submenu>
+        <el-submenu index="3">
+          <template slot="title"><i class="el-icon-s-ticket"></i>运营管理</template>
           <el-menu-item-group>
             <template slot="title">文章</template>
             <el-menu-item index="/essays/create">新建文章</el-menu-item>
@@ -45,6 +51,14 @@
             <template slot="title">广告位</template>
             <el-menu-item index="/ads/create">新建广告位</el-menu-item>
             <el-menu-item index="/ads/list">广告位列表</el-menu-item>
+          </el-menu-item-group>
+        </el-submenu>
+        <el-submenu index="4">
+          <template slot="title"><i class="el-icon-lock"></i>账号管理</template>
+          <el-menu-item-group>
+            <template slot="title">用户账号</template>
+            <el-menu-item index="/admin_users/create">新建账号</el-menu-item>
+            <el-menu-item index="/admin_users/list">编辑账号</el-menu-item>
           </el-menu-item-group>
         </el-submenu>
       </el-menu>
@@ -77,7 +91,7 @@
 .el-menu {
   overflow-x: hidden;
   overflow-y: auto;
-  height: 100vh;
+  height: 100%;
   margin-right: -1em;
 }
 .el-header {

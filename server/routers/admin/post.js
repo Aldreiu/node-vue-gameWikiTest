@@ -1,4 +1,8 @@
 const express = require('express');
+const jwt = require('jsonwebtoken')
+
+const AdminUser = require('../../models/AdminUser')
+
 const router = express.Router({
     mergeParams: true // 保留父级路由的值 与路由参数合并
 });
@@ -42,8 +46,16 @@ const router = express.Router({
 // ==============
 
 // 查看所有分类
-router.get("/", async (req, res) => {
-    
+router.get("/", async (req, res, next) => {
+    const token = String(req.headers.authorization || '').split(' ').pop()
+    const tokenData = jwt.verify(token, req.Secret)
+    req.user = await AdminUser.findById(tokenData.id)
+    // console.log(req.user);
+    // 需要对token  user 都要判断 还有id 需要频繁判断报错
+    // 使用 http-assert
+    await next();
+}, async (req, res) => {
+    console.log(req.user);
     const queryOptions = {}
     if (req.Model.modelName === 'Category') {
         queryOptions.populate = 'parent'
@@ -53,7 +65,7 @@ router.get("/", async (req, res) => {
     // limit做分页
     // const items = await req.Model.find().setOptions(queryOptions).limit(10)
     const items = await req.Model.find().setOptions(queryOptions)
-    
+
     res.send(items);
 })
 
@@ -68,7 +80,7 @@ router.get("/:id", async (req, res) => {
     const queryOptions = {}
     if (req.Model.modelName === 'Category') {
         queryOptions.populate = 'parent'
-    }else if(req.Model.modelName === 'Character'){
+    } else if (req.Model.modelName === 'Character') {
         queryOptions.populate = 'attribute'
     }
     const model = await req.Model.findById(req.params.id).setOptions(queryOptions)

@@ -103,3 +103,15 @@ export const getAdModel = (id) => http.get(`rest/ads/${id}`)
 export const PutAdrModel = (id, model) => http.put(`rest/ads/${id}`, model)
 // 根据id 删除对应广告
 export const delAdModel = (id) => http.delete(`rest/ads/${id}`)
+
+// =============== Admin_users =================
+// 新建账号
+export const postAdminUser = (model) => http.post('rest/admin_users', model)
+// 获取所有账号
+export const getAdminUserList = () => http.get('rest/admin_users')
+// 根据id获得相应账号
+export const getAdminUserModel = (id) => http.get(`rest/admin_users/${id}`)
+// 根据id 进行修改账号
+export const putAdminUserrModel = (id, model) => http.put(`rest/admin_users/${id}`, model)
+// 根据id 删除对应账号
+export const delAdminUserModel = (id) => http.delete(`rest/admin_users/${id}`)

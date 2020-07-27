@@ -23,6 +23,12 @@ import EssayEdit from '@/views/EssayEdit'
 // Ad
 import AdList from '@/views/AdList'
 import AdEdit from '@/views/AdEdit'
+// Admin_user
+import AdminUserList from '@/views/AdminUserList'
+import AdminUserEdit from '@/views/AdminUserEdit'
+
+// Login
+import Login from '@/views/Login'
 
 const originalPush = VueRouter.prototype.push
 VueRouter.prototype.push = function push(location) {
@@ -31,7 +37,13 @@ VueRouter.prototype.push = function push(location) {
 
 Vue.use(VueRouter)
 
-const routes = [{
+const routes = [
+  {
+    path:'/login',
+    name:'Login',
+    component:Login
+  },
+  {
     path: '/',
     name: 'Main',
     component: Main,
@@ -134,6 +146,20 @@ const routes = [{
       {
         path: '/ads/list',
         component: AdList
+      },
+      // admin_user
+      {
+        path: '/admin_users/create',
+        component: AdminUserEdit
+      },
+      {
+        path: '/admin_users/edit/:id',
+        component: AdminUserEdit,
+        props: true
+      },
+      {
+        path: '/admin_users/list',
+        component: AdminUserList
       },
     ]
   }
