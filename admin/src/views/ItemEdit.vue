@@ -10,8 +10,9 @@
       </el-form-item>
       <el-form-item label="装备图片">
         <el-upload
+          :headers="getAutorizationHeaders()"
           class="avatar-uploader"
-          :action="$http.defaults.baseURL + '/upload'"
+          :action="uploadUrl"
           :show-file-list="false"
           :on-success="afterUpload"
           name="file"
@@ -61,8 +62,8 @@ export default {
       this.model = res.data;
     },
     // 新建数据
-    fetchCreate(){
-      this.model={}
+    fetchCreate() {
+      this.model = {}
     },
 
     // 下次看到这个注释 记得封装axios 顺便把所有的接口进行封装成一个文件   先偷个懒(已完成)

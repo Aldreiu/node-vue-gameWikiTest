@@ -10,6 +10,7 @@
       </el-form-item>
       <el-form-item label="物品材料图片">
         <el-upload
+        :headers="getAutorizationHeaders()"
           class="avatar-uploader"
           :action="$http.defaults.baseURL + '/upload'"
           :show-file-list="false"

@@ -16,6 +16,7 @@
           </el-form-item>
           <el-form-item label="角色头像">
             <el-upload
+              :headers="getAutorizationHeaders()"
               class="avatar-uploader"
               :action="$http.defaults.baseURL + '/upload'"
               :show-file-list="false"
@@ -35,6 +36,7 @@
           </el-form-item>
           <el-form-item label="角色立绘">
             <el-upload
+            :headers="getAutorizationHeaders()"
               class="avatar-uploader"
               :action="$http.defaults.baseURL + '/upload'"
               :show-file-list="false"
@@ -225,6 +227,7 @@
               </el-form-item>
               <el-form-item label="技能图标">
                 <el-upload
+                :headers="getAutorizationHeaders()"
                   class="avatar-uploader"
                   :action="$http.defaults.baseURL + '/upload'"
                   :show-file-list="false"
@@ -250,7 +253,11 @@
                   type="textarea"
                   v-model="item.description"
                 ></el-input>
-                <el-button type="danger" class="skills-button" @click="model.skills.splice(i,1)"><i class="el-icon-delete"></i>删除当前技能</el-button>
+                <el-button
+                  type="danger"
+                  class="skills-button"
+                  @click="model.skills.splice(i,1)"
+                ><i class="el-icon-delete"></i>删除当前技能</el-button>
               </el-form-item>
             </el-col>
           </el-row>
@@ -388,7 +395,7 @@ export default {
 </script>
 
 <style>
-.el-button.skills-button{
+.el-button.skills-button {
   margin-top: 2rem;
 }
 .el-col {

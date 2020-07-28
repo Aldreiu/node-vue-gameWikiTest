@@ -1,7 +1,8 @@
 # node-vue-gameWikiTest
 
 ## 一、 项目简介
-模仿一个类似GBF游戏 wiki
+
+模仿一个类似 GBF 游戏 wiki
 
 ## 二、 管理后台
 
@@ -30,5 +31,5 @@
     6.登录接口(jwt,jsonwebtoken)
     6.服务端登录校验
     6.客户端路由限制(beforeEach,meta)
-
-
+      因为其他请求都可以用 axios拦截器去处理 Authorization
+      el-upload使用的是原生的 所以去用 mixin添加Authorization

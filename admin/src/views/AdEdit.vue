@@ -16,6 +16,7 @@
             </el-form-item>
             <el-form-item label="广告图片" style="margin-top:10px">
               <el-upload
+                :headers="getAutorizationHeaders()"
                 class="avatar-uploader"
                 :action="$http.defaults.baseURL + '/upload'"
                 :show-file-list="false"

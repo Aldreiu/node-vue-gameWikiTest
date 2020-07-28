@@ -26,6 +26,7 @@
         ></quill-editor>
 
         <el-upload
+        :headers="getAutorizationHeaders()"
         style="display:none"
           class="essay-uploader"
           :action="$http.defaults.baseURL + '/upload'"
