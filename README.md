@@ -33,3 +33,20 @@
     6.客户端路由限制(beforeEach,meta)
       因为其他请求都可以用 axios拦截器去处理 Authorization
       el-upload使用的是原生的 所以去用 mixin添加Authorization
+
+## 二、 移动网站网站
+
+1.使用 工具样式 SASS(SCSS) 
+1.样式重置(CSS Reset 或者 轻量 normalize.css)
+这里自己写
+1.网站颜色和字体 自定义(通过 scss进行管理 好维护)
+1.通过flex布局自定义样式(flex大部分手机都兼容 grid目前不能完全兼容)
+1.定义常用的边距定义(margin,padding) 配置好布局
+1.定义轮播图(vue-swiper)
+1.使用字体图标(可以使用阿里图标 也可使用 iconfont)
+1.卡片组件(card)
+1.列表卡组件(list-card,nav,swiper)
+1.首页新闻资讯
+1.首页角色列表
+1.新闻详情
+1.英雄详情
