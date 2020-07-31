@@ -1,0 +1,72 @@
+// 变数  用来存放定义的 class
+// 回顾下 容易忘
+// 局部文件  分音 (Partials) 以下划线开头命名的scss文件，不会单独打包成.css文件，被称为局部文件。
+// 如果需要导入 SCSS 或者 Sass 文件，但又不希望将其编译为 CSS，只需要在文件名前添加下划线，这样会告诉 Sass 不要编译这些文件
+
+
+// colors
+$colors: ("primary": #ffe4b7,
+    "white": #fff,
+    "light": #f9f9f9,
+    "black": #000,
+    "dark": #222,
+    "dark-1": #343440,
+    "grey-1": #c8c8c8,
+    "grey": #999,
+    "use-play": #3366cc,
+    "hone-swiper-info":#4b67af);
+
+// font-size
+$base-font-size: 13px;
+$font-sizes: (xxs: 0.6154,
+    // 8px
+    xs: 0.7692,
+    // 10px
+    sm: 0.9231,
+    // 12px
+    md: 1,
+    // 13px
+    lg: 1.0769,
+    // 14px
+    xl: 1.2308 // 14px,,,,
+);
+
+//   flex 主轴和侧轴
+$flex-jc: (start: flex-start,
+    end: flex-end,
+    center: center,
+    between: space-between,
+    around: space-around,
+);
+
+
+
+$flex-ai: (start: flex-start,
+    end: flex-end,
+    center: center,
+    stretch: stretch,
+);
+
+
+// spacing
+// 间距等级 0-5
+// 例子 .mt-1 => margin top leave1    .pb-2 => margin bottom leave2
+
+// 间距类型
+$spacing-types: (m: margin,
+    p: padding,
+);
+$spacing-directions: (t: top,
+    r: right,
+    b: bottom,
+    l: left,
+);
+// 单位尺寸
+$spacing-base-size: 1rem;
+$spacing-sizes: (0: 0,
+    1: 0.25,
+    2: 0.5,
+    3: 1,
+    4: 1.5,
+    5: 3,
+);

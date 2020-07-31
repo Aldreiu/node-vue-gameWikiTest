@@ -10,7 +10,7 @@
         <div class="text-black">碧蓝幻想</div>
         <div class="text-drak fs-xxs">一起上格兰法斯</div>
       </div>
-      <button class="btn bg-use-play text-white px-3 py-2">点击游玩</button>
+      <button class="btn bg-use-play  px-3 py-2"><a href="http://game.granbluefantasy.jp/#top" class="text-white">点击游玩</a></button>
     </div>
 
     <div class="bg-primary py-3">

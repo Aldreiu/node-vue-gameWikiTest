@@ -1,3 +1,5 @@
+@import '../scss/variables';
+
 // 样式重置
 * {
   box-sizing: border-box;
@@ -18,22 +20,13 @@ body {
 
 a {
   color: #999;
+  text-decoration: none;
 }
 
 // 管理公共样式
-
+// 具体实现
 // colors
-$colors: (
-  "primary": #ffe4b7,
-  "white": #fff,
-  "light": #f9f9f9,
-  "black": #000,
-  "dark": #222,
-  "dark-1": #343440,
-  "grey-1": #c8c8c8,
-  "grey": #999,
-  "use-play": #3366cc,
-);
+
 
 @each $colorKey, $color in $colors {
   // 文字
@@ -54,21 +47,15 @@ $colors: (
   }
 }
 
+// height
+.w-100{
+  width: 100%;
+}
+.h-100{
+  height: 100%;
+}
+
 // font-size
-$base-font-size: 13px;
-$font-sizes: (
-  xxs: 0.6154,
-  // 8px
-    xs: 0.7692,
-  // 10px
-    sm: 0.9231,
-  // 12px
-    md: 1,
-  // 13px
-    lg: 1.0769,
-  // 14px
-    xl: 1.2308 // 14px,,,,
-);
 
 @each $sizeKey, $size in $font-sizes {
   .fs-#{$sizeKey} {
@@ -92,13 +79,7 @@ $font-sizes: (
   flex-grow: 1;
 }
 
-$flex-jc: (
-  start: flex-start,
-  end: flex-end,
-  center: center,
-  between: space-between,
-  around: space-around,
-);
+
 
 @each $key, $value in $flex-jc {
   .jc-#{$key} {
@@ -106,12 +87,7 @@ $flex-jc: (
   }
 }
 
-$flex-ai: (
-  start: flex-start,
-  end: flex-end,
-  center: center,
-  stretch: stretch,
-);
+
 
 @each $key, $value in $flex-ai {
   .ai-#{$key} {
@@ -124,26 +100,7 @@ $flex-ai: (
 // 例子 .mt-1 => margin top leave1    .pb-2 => margin bottom leave2
 
 // 间距类型
-$spacing-types: (
-  m: margin,
-  p: padding,
-);
-$spacing-directions: (
-  t: top,
-  r: right,
-  b: bottom,
-  l: left,
-);
-// 单位尺寸
-$spacing-base-size: 1rem;
-$spacing-sizes: (
-  0: 0,
-  1: 0.25,
-  2: 0.5,
-  3: 1,
-  4: 1.5,
-  5: 3,
-);
+
 @each $typeKey, $type in $spacing-types {
   // .m-1
   @each $sizeKey, $size in $spacing-sizes {
@@ -204,4 +161,10 @@ $spacing-sizes: (
   .active {
     border-bottom: 2px solid #fff;
   }
+}
+
+// home swiper img
+.hsi{
+  height: 200px;
+  object-fit: cover;
 }
