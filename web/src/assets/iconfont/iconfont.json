@@ -1,0 +1,93 @@
+{
+  "id": "1980732",
+  "name": "testGameWiki",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "374419",
+      "name": "news",
+      "font_class": "news",
+      "unicode": "e6c3",
+      "unicode_decimal": 59075
+    },
+    {
+      "icon_id": "15914484",
+      "name": "Back -MyTycoonPlace",
+      "font_class": "Active",
+      "unicode": "e64a",
+      "unicode_decimal": 58954
+    },
+    {
+      "icon_id": "577339",
+      "name": "攻略",
+      "font_class": "gonglve",
+      "unicode": "e73b",
+      "unicode_decimal": 59195
+    },
+    {
+      "icon_id": "1044220",
+      "name": "壁纸铺贴",
+      "font_class": "bizhiputie",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
+      "icon_id": "3283215",
+      "name": "角色",
+      "font_class": "role",
+      "unicode": "e60b",
+      "unicode_decimal": 58891
+    },
+    {
+      "icon_id": "5947684",
+      "name": "交流",
+      "font_class": "jiaoliu",
+      "unicode": "e602",
+      "unicode_decimal": 58882
+    },
+    {
+      "icon_id": "7055654",
+      "name": "介绍",
+      "font_class": "jieshao",
+      "unicode": "e72f",
+      "unicode_decimal": 59183
+    },
+    {
+      "icon_id": "8006479",
+      "name": "资料",
+      "font_class": "ziliao",
+      "unicode": "e610",
+      "unicode_decimal": 58896
+    },
+    {
+      "icon_id": "8329823",
+      "name": "Menu",
+      "font_class": "Menu",
+      "unicode": "e664",
+      "unicode_decimal": 58980
+    },
+    {
+      "icon_id": "11003251",
+      "name": "egg",
+      "font_class": "egg",
+      "unicode": "e605",
+      "unicode_decimal": 58885
+    },
+    {
+      "icon_id": "11749512",
+      "name": "计算器",
+      "font_class": "jisuanqi",
+      "unicode": "e6a4",
+      "unicode_decimal": 59044
+    },
+    {
+      "icon_id": "13868174",
+      "name": "网站",
+      "font_class": "wangzhan",
+      "unicode": "e653",
+      "unicode_decimal": 58963
+    }
+  ]
+}

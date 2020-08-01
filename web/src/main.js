@@ -6,6 +6,8 @@ import VueAwesomeSwiper from "vue-awesome-swiper";
 // 轮播图样式
 // import style
 import "swiper/css/swiper.css";
+// 加载 iconfont图标
+import "./assets/iconfont/iconfont.css"
 
 Vue.use(VueAwesomeSwiper /* { default options with global component } */);
 

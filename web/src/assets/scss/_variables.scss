@@ -8,6 +8,7 @@
 $colors: ("primary": #ffe4b7,
     "white": #fff,
     "light": #f9f9f9,
+    "light-1":#d4d9de,
     "black": #000,
     "dark": #222,
     "dark-1": #343440,
@@ -15,6 +16,7 @@ $colors: ("primary": #ffe4b7,
     "grey": #999,
     "use-play": #3366cc,
     "hone-swiper-info":#4b67af);
+    $border-color:map-get($map: $colors, $key: "light-1");
 
 // font-size
 $base-font-size: 13px;
