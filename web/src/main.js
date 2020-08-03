@@ -15,6 +15,13 @@ Vue.use(VueAwesomeSwiper /* { default options with global component } */);
 import "./assets/scss/style.scss";
 import router from "./router";
 
+// 引入公共组件
+import Card from '@/components/Card'
+// 添加全局公共组件
+Vue.component('m-card',Card)
+import ListCard from '@/components/ListCard'
+Vue.component('m-list-card',ListCard)
+
 Vue.config.productionTip = false;
 
 new Vue({

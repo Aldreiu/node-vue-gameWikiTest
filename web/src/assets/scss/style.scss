@@ -187,6 +187,17 @@ $type in $spacing-types {
   }
 }
 
+.nav-card{
+  display: flex;
+  .nav-card-item{
+    border-bottom: 3px solid transparent;
+  }
+  .active {
+    color: map-get($map: $colors, $key: 'primary');
+    border-bottom: 2px solid map-get($map: $colors, $key: 'primary');
+  }
+}
+
 // home swiper img
 .hsi {
   height: 200px;
@@ -216,4 +227,9 @@ $type in $spacing-types {
     height: 0.7692rem;
     background-position: 38.577% 52.076%;
   }
+}
+
+// Main  swiper-content
+.swiper-content{
+  
 }

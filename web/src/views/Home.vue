@@ -26,6 +26,7 @@
       ></div>
     </swiper>
     <!-- swiper end -->
+    <!-- nav-icon start -->
     <div class="nav-icons bg-white  mt-2  text-center pt-3 text-grey">
       <div class="d-flex flex-wrap">
         <div class="nav-item mb-3">
@@ -72,8 +73,65 @@
       <div class="bg-light py-1 fs-xs">
         <i class="sprite sprite-arrow"></i>
         收起
-        </div>
+      </div>
     </div>
+    <!-- nav-icon end -->
+    <!-- new And other card start -->
+    <!-- 使用card组件 slot去补充内容 -->
+    <!-- <m-card icon="news" title="新闻资讯">
+      <div class="nav-card jc-between">
+          <div class="nav-card-item active">
+            <div class="nav-link">热门</div>
+          </div>
+          <div class="nav-card-item ">
+            <div class="nav-link">新闻</div>
+          </div>
+          <div class="nav-card-item ">
+            <div class="nav-link">公告</div>
+          </div>
+          <div class="nav-card-item ">
+            <div class="nav-link">攻略</div>
+          </div>
+          <div class="nav-card-item ">
+            <div class="nav-link">活动</div>
+          </div>
+        </div>
+        <swiper>
+          <swiper-slide v-for="m in 5" :key="m">
+            <div class="swiper-content py-2" v-for="n in 5" :key="n">
+              <span>[新闻]</span>
+              <span> | </span>
+              <span>2xxx年x月xx日起开始的月末战货活动。我最爱的奥古斯提</span>
+              <span>xx/xx</span>
+            </div>
+          </swiper-slide>
+        </swiper>
+    </m-card> -->
+
+    <m-list-card
+      icon="news"
+      title="新闻资讯"
+      :categories="newsCats"
+    >
+      <template #items="{category}">
+        <div
+          class="swiper-content py-2"
+          v-for="(item,i) in category.newList"
+          :key="i"
+        >
+          <span>[{{ item.categoryName }}]</span>
+          <span> | </span>
+          <span>{{ item.title }}</span>
+          <span>{{ item.data }}</span>
+        </div>
+      </template>
+
+    </m-list-card>
+
+    <m-card
+      icon="role"
+      title="角色列表"
+    >21123123</m-card>
   </div>
 </template>
 
@@ -93,6 +151,49 @@ export default {
         // Some Swiper option/callback...
       },
 
+      // 列表数据
+      newsCats: [
+        {
+          name: "热门",
+          newList: new Array(5).fill({}).map(() => ({
+            categoryName: '公告',
+            title: '阿巴阿巴阿巴',
+            data: '06/08'
+          }))
+        },
+        {
+          name: "热门2",
+          newList: new Array(5).fill({}).map(() => ({
+            categoryName: '公告23',
+            title: '阿巴阿巴阿巴',
+            data: '06/08'
+          }))
+        },
+        {
+          name: "热门3",
+          newList: new Array(5).fill({}).map(() => ({
+            categoryName: '公告3',
+            title: '阿巴阿巴阿巴3',
+            data: '06/08'
+          }))
+        },
+        {
+          name: "热门4",
+          newList: new Array(5).fill({}).map(() => ({
+            categoryName: '公告',
+            title: '阿巴阿巴阿巴',
+            data: '06/08'
+          }))
+        },
+        {
+          name: "热门5",
+          newList: new Array(5).fill({}).map(() => ({
+            categoryName: '公告',
+            title: '阿巴阿巴阿巴',
+            data: '06/08'
+          }))
+        },
+      ]
 
     }
   },
