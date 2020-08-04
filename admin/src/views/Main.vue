@@ -13,7 +13,7 @@
         active-text-color="#ffd04b"
       >
         <el-submenu index="1">
-          <template slot="title"><i class="el-icon-s-grid"></i>分离管理</template>
+          <template slot="title"><i class="el-icon-s-grid"></i>分类管理</template>
           <el-menu-item-group>
             <template slot="title">分类</template>
             <el-menu-item index="/categories/createFather">新建父级分类</el-menu-item>

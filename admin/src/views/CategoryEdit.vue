@@ -7,7 +7,7 @@
     >
       <el-form-item label="父级分类">
         <el-select
-          v-model="model.parent"
+          v-model="model.parent.name"
           placeholder="请选择父级分类"
         >
           <el-option
@@ -37,7 +37,9 @@ export default {
   props: ['id'],
   data() {
     return {
-      model: {},
+      model: {
+        parent:{}
+      },
       parents: []
     }
   },
@@ -46,7 +48,7 @@ export default {
     async fetch() {
       // const res = await this.$http.get(`categories/${this.id}`);
       const res = await getCategoryModel(this.id)
-      this.model = res.data;
+      this.model = Object.assign({},this.model,res.data)
     },
     // 获取父级
     async fetchParents() {

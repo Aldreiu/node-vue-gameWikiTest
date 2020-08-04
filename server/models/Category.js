@@ -12,4 +12,11 @@ const schema = new mongoose.Schema({
     }
 })
 
+schema.virtual('newsList',{
+    ref:'Essay',
+    foreignField:'categories',
+    justOne:false,
+    localField:'_id'
+})
+
 module.exports = mongoose.model('Category', schema)

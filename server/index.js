@@ -9,17 +9,24 @@ app.use(express.json());
 // 在express中设置 密钥
 app.set('secret', 'fafasd42afad54qasfd');
 
+// 数据库db放在引用接口之前
+const dbs = require("./plugins/db");
 
 // 让上传文件能被访问 可见  通过路由
 // 托管静态文件
 app.use("/uploads", express.static(__dirname + "/uploads"));
 
 // 引入子路由的接口方法
-const routes = require("./routers/admin");
-const dbs = require("./plugins/db");
+const routesAdmin = require("./routers/admin");
+const routesWeb = require("./routers/web")
+
+
+
 
 // 抽出模块
-routes(app);
+routesAdmin(app);
+routesWeb(app)
+
 dbs(app);
 
 
