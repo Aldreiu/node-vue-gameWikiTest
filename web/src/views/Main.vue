@@ -61,4 +61,12 @@ export default {
   border-top: 1px solid map-get($map: $colors, $key: "light");
   border-bottom: 1px solid map-get($map: $colors, $key: "light");
 }
+
+// 吸顶效果
+.topbar{
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+  z-index: 999;
+}
 </style>

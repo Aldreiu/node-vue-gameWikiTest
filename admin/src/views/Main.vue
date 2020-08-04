@@ -94,7 +94,8 @@
             <div class="img6"></div>
           </div>
         </div>
-        <router-view v-else></router-view>
+        <!-- 坑 由于 Vue 会复用相同组件 使用key 是编辑和新增两个路由的$route.path并不一样, 所以组件被强制不复用, -->
+        <router-view :key="$route.path" v-else></router-view>
       </el-main>
     </el-container>
   </el-container>
