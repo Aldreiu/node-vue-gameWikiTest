@@ -48,10 +48,10 @@ router.get('/news/list',async (req,res) =>{
 
     // 使用聚合查询 类似mysql的关联 同时执行好几次查询
     const cats = await Category.aggregate([
-        // 类似where查询  聚合管道
+        // 类似where查询  聚合管道    1.过滤数据
         {$match:{parent:parent._id}},  // 查找根据父级关联的_id
         // 类似关系型数据库的 join 左外连接  以数据中的 name为主体去查其他 另外集合
-        {$lookup:{
+        {$lookup:{            //    2.关联查询
             // 关联的集合名字
             from:'essays',  // 集合名字是 model模型的名字的复数小写形式   mongoose.model的第三个参数一般省略 表示集合名字
             localField:'_id', // 本地键的名字
@@ -59,12 +59,29 @@ router.get('/news/list',async (req,res) =>{
             as:'newsList'  // 取个别名
         }},
         // 去定义 newsList 只要去拿到 5个
-        {
+        {                    // 3.对数据进行进行改变 吧多个变成规定5条数据
             $addFields:{
                 newsList:{$slice:['$newsList',5]}
             }
         }
     ])
+    const subCats = cats.map(el => el._id)
+    // console.log(subCats);
+    cats.unshift({
+        name:"热门",
+        newsList:await Essay.find().where({
+            categories:{$in:subCats}
+        }).populate('categories').limit(5).lean()
+    })
+
+    // 处理第一个特殊的热门的分类 因为他里面包含多种分类
+    cats.map(cat =>{
+        cat.newsList.map(news =>{
+            news.categoryName = cat.name === "热门"?news.categories[0].name : cat.name
+            return news
+        })
+        return cat
+    })
 
     res.send(cats)
 })
