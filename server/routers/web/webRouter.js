@@ -7,6 +7,7 @@ const FatherCategory = require('../../models/FatherCategory')
 
 const Essay = require('../../models/Essay')
 
+// 导入新闻
 router.get('/news/init', async (req, res) => {
     const parent = await FatherCategory.findOne({
         name: "新闻分类"
@@ -31,6 +32,7 @@ router.get('/news/init', async (req, res) => {
     res.send(newsList)
 })
 
+// 新闻列表
 router.get('/news/list',async (req,res) =>{
     // const parent = await FatherCategory.findOne({
     //     name:'新闻分类'
@@ -85,5 +87,8 @@ router.get('/news/list',async (req,res) =>{
 
     res.send(cats)
 })
+
+// 导入角色数据
+// $$('#data-search .ctrl-value.ctrl-value-element.select2-hidden-accessible > option').map((el,i)=>{return { name:el.innerText,heroes:$$('.search-content .list-form-middle .p-item').map(el=>{return {name:$$('a',el)[0].title,avatar:$$('a img',el)[0].src}}) }})[1]
 
 module.exports = router

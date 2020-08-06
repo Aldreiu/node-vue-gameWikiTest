@@ -5,11 +5,11 @@
       :title="title"
     >
       <div class="nav-card jc-between">
-        <div class="nav-card-item " :class="{active:active===i}" v-for="(category,i) in categories" :key="i" @click="active = i">
+        <div class="nav-card-item " :class="{active:active===i}" v-for="(category,i) in categories" :key="i" @click="swiper.slideTo(i)">
           <div class="nav-link">{{category.name}}</div>
         </div>
       </div>
-      <swiper>
+      <swiper ref="list" @slideChange="()=>active = swiper.activeIndex">
         <swiper-slide
           v-for="(category,i) in categories"
           :key="i"
@@ -33,6 +33,11 @@ export default {
             active:0,
         }
     },
+    computed: {
+    swiper() {
+      return this.$refs.list.$swiper
+    }
+  },
 }
 </script>
 

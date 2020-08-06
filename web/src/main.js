@@ -7,7 +7,7 @@ import VueAwesomeSwiper from "vue-awesome-swiper";
 // import style
 import "swiper/css/swiper.css";
 // 加载 iconfont图标
-import "./assets/iconfont/iconfont.css"
+import "./assets/iconfont/iconfont.css";
 
 Vue.use(VueAwesomeSwiper /* { default options with global component } */);
 
@@ -16,13 +16,18 @@ import "./assets/scss/style.scss";
 import router from "./router";
 
 // 引入公共组件
-import Card from '@/components/Card'
+import Card from "@/components/Card";
 // 添加全局公共组件
-Vue.component('m-card',Card)
-import ListCard from '@/components/ListCard'
-Vue.component('m-list-card',ListCard)
+Vue.component("m-card", Card);
+import ListCard from "@/components/ListCard";
+Vue.component("m-list-card", ListCard);
 
 Vue.config.productionTip = false;
+
+import axios from "axios";
+Vue.prototype.$http = axios.create({
+  baseURL: "http://localhost:5000/web/api",
+});
 
 new Vue({
   router,

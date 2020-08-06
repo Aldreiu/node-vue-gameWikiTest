@@ -115,14 +115,14 @@
     >
       <template #items="{category}">
         <div
-          class="swiper-content py-2"
-          v-for="(item,i) in category.newList"
+          class="swiper-content py-2 fs-lg d-flex"
+          v-for="(item,i) in category.newsList"
           :key="i"
         >
-          <span>[{{ item.categoryName }}]</span>
-          <span> | </span>
-          <span>{{ item.title }}</span>
-          <span>{{ item.data }}</span>
+          <span class="text-dark-1 pl-1">[{{ item.categoryName }}]</span>
+          <span class="px-2"> | </span>
+          <span class="flex-1 text-over text-dark">{{ item.title }}</span>
+          <span class="text-dark pr-2">{{ item.createdAt | date }}</span>
         </div>
       </template>
 
@@ -136,8 +136,13 @@
 </template>
 
 <script>
-
+ import dayjs from 'dayjs'
 export default {
+  filters: {
+    date(val){
+      return dayjs(val).format('MM/DD')
+    }
+  },
   name: 'Home',
   data() {
     return {
@@ -152,50 +157,18 @@ export default {
       },
 
       // 列表数据
-      newsCats: [
-        {
-          name: "热门",
-          newList: new Array(5).fill({}).map(() => ({
-            categoryName: '公告',
-            title: '阿巴阿巴阿巴',
-            data: '06/08'
-          }))
-        },
-        {
-          name: "热门2",
-          newList: new Array(5).fill({}).map(() => ({
-            categoryName: '公告23',
-            title: '阿巴阿巴阿巴',
-            data: '06/08'
-          }))
-        },
-        {
-          name: "热门3",
-          newList: new Array(5).fill({}).map(() => ({
-            categoryName: '公告3',
-            title: '阿巴阿巴阿巴3',
-            data: '06/08'
-          }))
-        },
-        {
-          name: "热门4",
-          newList: new Array(5).fill({}).map(() => ({
-            categoryName: '公告',
-            title: '阿巴阿巴阿巴',
-            data: '06/08'
-          }))
-        },
-        {
-          name: "热门5",
-          newList: new Array(5).fill({}).map(() => ({
-            categoryName: '公告',
-            title: '阿巴阿巴阿巴',
-            data: '06/08'
-          }))
-        },
-      ]
+      newsCats: []
 
     }
+  },
+  methods: {
+    async fetchNesList() {
+      const res = await this.$http.get('news/list');
+      this.newsCats = res.data;
+    }
+  },
+  created() {
+    this.fetchNesList()
   },
   computed: {
     swiper() {

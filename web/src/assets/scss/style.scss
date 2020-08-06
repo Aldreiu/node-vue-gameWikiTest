@@ -154,6 +154,14 @@ $type in $spacing-types {
   }
 }
 
+// text overflow 文本溢出
+.text-over{
+  display: inline-block;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
 // button
 .btn {
   border: none;
