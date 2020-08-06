@@ -424,7 +424,7 @@ export default {
   line-height: 178px;
   text-align: center;
 }
-.avatar-uploader .avatar {
+.el-upload .el-upload--text .avatar {
   width: 100%;
   height: auto;
   display: block;
