@@ -108,13 +108,16 @@
         </swiper>
     </m-card> -->
 
+    <!-- 新闻资讯 -->
     <m-list-card
       icon="news"
       title="新闻资讯"
       :categories="newsCats"
     >
       <template #items="{category}">
-        <div
+        <router-link
+          tag="div"
+          :to="`/essays/${item._id}`"
           class="swiper-content py-2 fs-lg d-flex"
           v-for="(item,i) in category.newsList"
           :key="i"
@@ -123,23 +126,44 @@
           <span class="px-2"> | </span>
           <span class="flex-1 text-over text-dark">{{ item.title }}</span>
           <span class="text-dark pr-2">{{ item.createdAt | date }}</span>
-        </div>
+        </router-link>
       </template>
 
     </m-list-card>
 
-    <m-card
+    <!-- 角色列表 -->
+    <m-list-card
       icon="role"
       title="角色列表"
-    >21123123</m-card>
+      :categories="characterCats"
+    >
+      <template #items="{category}">
+        <div class="d-flex flex-wrap">
+          <div
+            class="swiper-content py-2 fs-lg text-center p-2"
+            style="width:33.33%;"
+            v-for="(item,i) in category.charactersList"
+            :key="i"
+          >
+            <img
+              class="w-100"
+              :src="item.avatar"
+              alt=""
+            >
+            <div class="text-over">{{ item.name }}</div>
+          </div>
+        </div>
+      </template>
+
+    </m-list-card>
   </div>
 </template>
 
 <script>
- import dayjs from 'dayjs'
+import dayjs from 'dayjs'
 export default {
   filters: {
-    date(val){
+    date(val) {
       return dayjs(val).format('MM/DD')
     }
   },
@@ -156,19 +180,27 @@ export default {
         // Some Swiper option/callback...
       },
 
-      // 列表数据
-      newsCats: []
-
+      // 新闻列表数据
+      newsCats: [],
+      // 角色列表数据
+      characterCats: []
     }
   },
   methods: {
+    // 新闻列表数据
     async fetchNesList() {
       const res = await this.$http.get('news/list');
       this.newsCats = res.data;
+    },
+    // 角色列表数据
+    async fetchCharacterList() {
+      const res = await this.$http.get('characters/list');
+      this.characterCats = res.data;
     }
   },
   created() {
-    this.fetchNesList()
+    this.fetchNesList();
+    this.fetchCharacterList();
   },
   computed: {
     swiper() {

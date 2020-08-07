@@ -67,6 +67,13 @@ $size in $font-sizes {
   }
 }
 
+// borders
+@each $dir in (top, right, bottom, left) {
+  .border-#{$dir} {
+    border-#{$dir}: 1px solid $border-color;
+  }
+}
+
 // flex
 .d-flex {
   display: flex;
@@ -155,7 +162,7 @@ $type in $spacing-types {
 }
 
 // text overflow 文本溢出
-.text-over{
+.text-over {
   display: inline-block;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -195,11 +202,13 @@ $type in $spacing-types {
   }
 }
 
-.nav-card{
+.nav-card {
   display: flex;
-  .nav-card-item{
+
+  .nav-card-item {
     border-bottom: 3px solid transparent;
   }
+
   .active {
     color: map-get($map: $colors, $key: 'primary');
     border-bottom: 2px solid map-get($map: $colors, $key: 'primary');
@@ -238,6 +247,4 @@ $type in $spacing-types {
 }
 
 // Main  swiper-content
-.swiper-content{
-  
-}
+.swiper-content {}

@@ -3,15 +3,18 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Main from '../views/Main.vue'
 
+import Essay from '../views/Essay.vue'
+
 Vue.use(VueRouter)
 
   const routes = [
   {
     path: '/',
-    name: 'Main',
+    // name: 'Main',
     component: Main,
     children:[
-      {path:'/',name:'Home',component:Home}
+      {path:'/',name:'Home',component:Home},
+      {path:'/essays/:id',name:'Essay',component:Essay,props:true},
     ]
   },
   {

@@ -142,9 +142,9 @@ router.get("/news/list", async (req, res) => {
 
 // 导入角色数据
 // $$('#data-search .ctrl-value.ctrl-value-element.select2-hidden-accessible > option').map((el,i)=>{return { name:el.innerText,heroes:$$('.search-content .list-form-middle .p-item').map(el=>{return {name:$$('a',el)[0].title,avatar:$$('a img',el)[0].src}}) }})[1]
-router.get('/heroes/init',async (req,res) =>{
+router.get('/characters/init',async (req,res) =>{
   // 如果数据有问题先清空
-  // await Character.deleteMany({})   
+  await Character.deleteMany({})   
   const rawData = [
     {"name":"热门","heroes":[{"name":"阿比(SSR)","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/3/37/M_3040284000_01.jpg"},{"name":"萨缇洛斯","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/c/cd/M_3040280000_01.jpg"},{"name":"伊尔诺特","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/4/44/M_3040277000_01.jpg"},{"name":"莱茵哈撒(限定)","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/9/94/M_3040274000_01.jpg"},{"name":"德朗克(火)","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/e/e2/M_3040269000_01.jpg"},{"name":"无限","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/e/e4/M_3040267000_01.jpg"},{"name":"缇娜(泳装)","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/b/ba/M_3040266000_01.jpg"},{"name":"梅格","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/a/a9/M_3030290000_01.jpg"},{"name":"阿米拉(泳装)","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/9/95/M_3040287000_01.jpg"},{"name":"埃尔斯特之要 黑骑士&欧尔姬丝","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/8/8c/M_3040270000_01.jpg"},{"name":"布列迪塔(SSR)","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/4/4c/M_3040278000_01.jpg"},{"name":"零","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/7/77/M_3040265000_01.jpg"},{"name":"希斯(活动)","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/1/18/M_3040262000_01.jpg"},{"name":"卢修斯(SSR)","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/c/cd/M_3040254000_01.jpg"},{"name":"碧卡拉","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/1/1a/M_3040252000_01.jpg"},{"name":"赫莱尔·本·夏蕾姆","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/e/ea/M_3040251000_01.jpg"},{"name":"容","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/3/33/M_3030277000_01.jpg"},{"name":"蔻","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/5/54/M_3040242000_01.jpg"},{"name":"绚濑绘里＆矢泽妮可＆东条希","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/e/e1/M_3040231000_01.jpg"},{"name":"路西欧(泳装)","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/5/54/M_3040286000_01.jpg"},{"name":"克璐璐(泳装)","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/e/ec/M_3040283000_01.jpg"},{"name":"秋罗","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/e/e6/M_3040273000_01.jpg"},{"name":"米拉奥尔&扎莉莉亚欧","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/5/55/M_3040272000_01.jpg"},{"name":"斯特姆(水)","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/d/dc/M_3040268000_01.jpg"},{"name":"飞龙和吸血公主 斑比&贝丝","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/7/74/M_3040264000_01.jpg"},{"name":"莉夏(水)","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/4/4f/M_3040263000_01.jpg"},{"name":"蕾欧娜(浴衣)","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/f/fe/M_3030274000_01.jpg"},{"name":"欧罗巴(泳装)","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/6/68/M_3040226000_01.jpg"},{"name":"卡莉奥斯特萝(泳装)","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/3/31/M_3040225000_01.jpg"},{"name":"阿妮拉(泳装)","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/c/c3/M_3040288000_01.jpg"},{"name":"诺伊修(风)","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/d/dc/M_3040281000_01.jpg"},{"name":"高垣枫","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/4/4e/M_3040276000_01.jpg"},{"name":"格里姆尼尔(情人节)","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/2/2e/M_3040261000_01.jpg"},{"name":"尤达拉哈(风)","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/3/38/M_3040259000_01.jpg"},{"name":"乔伊","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/2/29/M_3030280000_01.jpg"},{"name":"塞鲁艾尔(圣诞)","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/4/4a/M_3040250000_01.jpg"},{"name":"扭蛋平","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/f/f0/M_3040248000_01.jpg"},{"name":"缪恩(圣诞)","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/e/ef/M_3040246000_01.jpg"},{"name":"库鲁尼(SR)","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/8/81/M_3030278000_01.jpg"},{"name":"苏丝雅(风)","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/4/4e/M_3040241000_01.jpg"},{"name":"莫妮卡(限定)","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/5/57/M_3040238000_01.jpg"},{"name":"勇者与公主 斯坦＆阿莉莎","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/a/af/M_3040233000_01.jpg"},{"name":"星空凛＆小泉花阳＆西木野真姬","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/1/1e/M_3040229000_01.jpg"},{"name":"枢木朱雀","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/3/3c/M_3040220000_01.jpg"},{"name":"战争三女神","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/b/b9/M_3040218000_01.jpg"},{"name":"格里姆尼尔(限定)","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/3/34/M_3040212000_01.jpg"},{"name":"维拉(风)","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/2/2a/M_3040211000_01.jpg"},{"name":"可露瓦(SR)","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/6/67/M_3030266000_01.jpg"},{"name":"尤艾尔(泳装)","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/5/53/M_3040210000_01.jpg"},{"name":"埃斯塔利奥拉","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/6/64/M_3040163000_01.jpg"},{"name":"卡兹利拉","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/2/2d/M_3040166000_01.jpg"},{"name":"赫尔艾斯(风)","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/6/69/M_3040208000_01.jpg"}]},
     {"name":"火","heroes":[{"name":"阿比(SSR)","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/3/37/M_3040284000_01.jpg"},{"name":"萨缇洛斯","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/c/cd/M_3040280000_01.jpg"},{"name":"伊尔诺特","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/4/44/M_3040277000_01.jpg"},{"name":"莱茵哈撒(限定)","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/9/94/M_3040274000_01.jpg"},{"name":"德朗克(火)","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/e/e2/M_3040269000_01.jpg"},{"name":"无限","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/e/e4/M_3040267000_01.jpg"},{"name":"缇娜(泳装)","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/b/ba/M_3040266000_01.jpg"},{"name":"斯卡哈(情人节)","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/2/28/M_3040260000_01.jpg"},{"name":"优希斯(火)","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/d/dc/M_3040253000_01.jpg"},{"name":"维拉(特典)","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/c/c7/M_3040243000_01.jpg"},{"name":"齐格飞(火)","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/c/c8/M_3040237000_01.jpg"},{"name":"科罗萨斯","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/1/1d/M_3040235000_01.jpg"},{"name":"塔维娜","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/f/f8/M_3040234000_01.jpg"},{"name":"卡西乌斯(浴衣)","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/5/55/M_3030273000_01.jpg"},{"name":"星期五小姐(泳装)","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/d/d3/M_3030271000_01.jpg"},{"name":"红月华莲","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/0/0d/M_3040221000_01.jpg"},{"name":"阿斯特尔(火)","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/0/01/M_3030268000_01.jpg"},{"name":"芙劳","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/4/4e/M_3040161000_01.jpg"},{"name":"阿拉南","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/1/11/M_3040167000_01.jpg"},{"name":"雅典娜","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/0/0b/M_3040202000_01.jpg"},{"name":"湿婆","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/3/31/M_3040196000_01.jpg"},{"name":"罗丝涅(SR)","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/4/4f/M_3030256000_01.jpg"},{"name":"白龙的双骑士 兰斯洛特＆维恩","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/3/3a/M_3040191000_01.jpg"},{"name":"翼","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/1/1e/M_3040180000_01.jpg"},{"name":"松浦果南＆黑泽黛雅＆小原鞠莉","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/a/a6/M_3040185000_01.jpg"},{"name":"伊尔莎(泳装)","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/f/fa/M_3040177000_01.jpg"},{"name":"缇娜(情人节)","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/2/20/M_3030236000_01.jpg"},{"name":"佐伊(活动)","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/c/cf/M_3030233000_01.jpg"},{"name":"特蕾丝(SSR)","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/6/6b/M_3040149000_01.jpg"},{"name":"伊帕兹(SR)","avatar":"https://huiji-public.huijistatic.com/gbf/uploads/c/c7/M_3030232000_01.jpg"}]},
@@ -167,7 +167,7 @@ router.get('/heroes/init',async (req,res) =>{
   
     
     cat.heroes = cat.heroes.map(hero => {
-      hero.categories = [category]
+      hero.attribute = category
       return hero
     })
 
@@ -175,6 +175,52 @@ router.get('/heroes/init',async (req,res) =>{
     await Character.insertMany(cat.heroes)
   }
   res.send(await Character.find())
+})
+
+// 角色列表
+router.get("/characters/list", async (req, res) => {
+  
+    const parent = await FatherCategory.findOne({
+      name: "属性",
+    });
+  
+    // 使用聚合查询 类似mysql的关联 同时执行好几次查询
+    const cats = await Category.aggregate([
+      // 类似where查询  聚合管道    1.过滤数据
+      { $match: { parent: parent._id } }, // 查找根据父级关联的_id
+      // 类似关系型数据库的 join 左外连接  以数据中的 name为主体去查其他 另外集合
+      {
+        $lookup: {
+          //    2.关联查询
+          // 关联的集合名字
+          from: "characters", // 集合名字是 model模型的名字的复数小写形式   mongoose.model的第三个参数一般省略 表示集合名字
+          localField: "_id", // 本地键的名字
+          foreignField: "attribute", // 外地键
+          as: "charactersList", // 取个别名
+        },
+      }
+    ]);
+    const subCats = cats.map((el) => el._id);
+    // console.log(subCats);
+    cats.unshift({
+      name: "热门",
+      charactersList: await Character.find()
+        .where({
+            attribute: { $in: subCats },
+        })
+        .populate("attribute")
+        .limit(10)
+        .lean(),
+    });
+
+  
+    res.send(cats);
+  });
+
+//   文章详情
+router.get('/essays/:id',async (req,res)=>{
+    const data = await Essay.findById(req.params.id)
+    res.send(data)
 })
 
 module.exports = router;

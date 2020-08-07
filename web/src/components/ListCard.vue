@@ -9,7 +9,8 @@
           <div class="nav-link">{{category.name}}</div>
         </div>
       </div>
-      <swiper ref="list" @slideChange="()=>active = swiper.activeIndex">
+      <!-- 是swiper配置选项 自动高度 -->
+      <swiper ref="list" @slideChange="()=>active = swiper.activeIndex" :options="{autoHeight:true}">
         <swiper-slide
           v-for="(category,i) in categories"
           :key="i"
