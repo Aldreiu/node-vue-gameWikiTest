@@ -139,7 +139,9 @@
     >
       <template #items="{category}">
         <div class="d-flex flex-wrap">
-          <div
+          <router-link
+            tag="div"
+            :to="`/characters/${item._id}`"
             class="swiper-content py-2 fs-lg text-center p-2"
             style="width:33.33%;"
             v-for="(item,i) in category.charactersList"
@@ -151,7 +153,7 @@
               alt=""
             >
             <div class="text-over">{{ item.name }}</div>
-          </div>
+          </router-link>
         </div>
       </template>
 

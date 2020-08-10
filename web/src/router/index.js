@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import Main from '../views/Main.vue'
 
 import Essay from '../views/Essay.vue'
+import Character from '../views/Character.vue'
 
 Vue.use(VueRouter)
 
@@ -16,6 +17,12 @@ Vue.use(VueRouter)
       {path:'/',name:'Home',component:Home},
       {path:'/essays/:id',name:'Essay',component:Essay,props:true},
     ]
+  },
+  {
+    path:'/characters/:id',
+    name:'Character',
+    component:Character,
+    props:true
   },
   {
     path: '/about',

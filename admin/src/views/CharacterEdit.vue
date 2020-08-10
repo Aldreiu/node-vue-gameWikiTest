@@ -38,9 +38,9 @@
             <el-upload
             :headers="getAutorizationHeaders()"
               class="avatar-uploader"
-              :action="$http.defaults.baseURL + '/upload'"
+              :action="uploadUrl"
               :show-file-list="false"
-              :on-success="afterUploadDrawing"
+              :on-success="res=> $set(model,'drawing',res.url)"
               name="file"
             >
               <img
@@ -56,7 +56,7 @@
           </el-form-item>
           <el-form-item label="角色属性">
             <el-select
-              v-model="model.attribute"
+              v-model="model.attribute.name"
               placeholder="请选择"
             >
               <el-option
@@ -294,7 +294,9 @@ export default {
         // 其他细腻
         otherinfo: {},
         // 技能
-        skills: []
+        skills: [],
+        // 属性
+        attribute:{}
 
       },
       // 属性选项
