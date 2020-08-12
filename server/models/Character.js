@@ -113,8 +113,14 @@ const schema = new mongoose.Schema({
         // 控制是 主动true  被动就false
         passive:{
             type:String
-        }
+        },
         // 使用间隔  初期和多少级  想偷下懒日后在补 =，=
+        time:{
+            type:String
+        },
+        time2:{
+            type:String
+        }
 
     }],
     // 控制是否有 最终上限这样才有 item5
@@ -125,10 +131,10 @@ const schema = new mongoose.Schema({
     },
     // 突破上限材料1   这个库之后加
     items1: [{
-            article: [{
+            article: {
                 type: mongoose.Schema.Types.ObjectId,
                 ref: Article
-            }],
+            },
             num: {
                 type: Number
             }
@@ -136,10 +142,10 @@ const schema = new mongoose.Schema({
 
     ],
     items2: [{
-            article: [{
+            article: {
                 type: mongoose.Schema.Types.ObjectId,
                 ref: Article
-            }],
+            },
             num: {
                 type: Number
             }
@@ -147,10 +153,10 @@ const schema = new mongoose.Schema({
 
     ],
     items3: [{
-            article: [{
+            article: {
                 type: mongoose.Schema.Types.ObjectId,
                 ref: Article
-            }],
+            },
             num: {
                 type: Number
             }
@@ -158,26 +164,27 @@ const schema = new mongoose.Schema({
 
     ],
     items4: [{
-            article: [{
+            article: {
                 type: mongoose.Schema.Types.ObjectId,
                 ref: Article
-            }],
+            },
             num: {
                 type: Number
             }
         }
 
     ],
-    items5: [{
-            article: [{
+    items5: [
+        {
+            article: {
                 type: mongoose.Schema.Types.ObjectId,
                 ref: Article
-            }],
+            },
             num: {
                 type: Number
             }
         }
-
+        
     ],
     // 相关角色
     // 只想本身拿角色头像

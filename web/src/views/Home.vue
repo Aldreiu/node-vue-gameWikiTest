@@ -152,7 +152,7 @@
               :src="item.avatar"
               alt=""
             >
-            <div class="text-over">{{ item.name }}</div>
+            <div class="text-over w-100">{{ item.name }}</div>
           </router-link>
         </div>
       </template>
