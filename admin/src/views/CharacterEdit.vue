@@ -166,12 +166,13 @@
             <el-col style="border:none;">
               上限1  所需材料
               <el-button @click="model.items1.push({})">
-                <i class="el-icon-plus"></i>添加技能
+                <i class="el-icon-plus"></i>添加上限材料
               </el-button>
               <el-col v-for="(item,i) in model.items1" :key="i">
                 <el-col style="border:none;">
                   <el-form-item :label="`上限1 材料${i+1}`">
                     <el-select
+                      filterable
                       v-model="item.article"
                       placeholder="请选择"
                       style="width:200px;margin-right:100px"
@@ -202,6 +203,7 @@
                 <el-col style="border:none;">
                   <el-form-item :label="`上限2 材料${i+1}`">
                     <el-select
+                    filterable
                       v-model="item.article"
                       placeholder="请选择"
                       style="width:200px;margin-right:100px"
@@ -226,12 +228,13 @@
             <el-col style="border:none;">
               上限3  所需材料
               <el-button @click="model.items3.push({})">
-                <i class="el-icon-plus"></i>添加技能
+                <i class="el-icon-plus"></i>添加上限材料
               </el-button>
               <el-col v-for="(item,i) in model.items3" :key="i">
                 <el-col style="border:none;">
                   <el-form-item :label="`上限3 材料${i+1}`">
                     <el-select
+                    filterable
                       v-model="item.article"
                       placeholder="请选择"
                       style="width:200px;margin-right:100px"
@@ -256,12 +259,13 @@
             <el-col style="border:none;">
               上限4  所需材料
               <el-button @click="model.items4.push({})">
-                <i class="el-icon-plus"></i>添加技能
+                <i class="el-icon-plus"></i>添加上限材料
               </el-button>
               <el-col v-for="(item,i) in model.items4" :key="i">
                 <el-col style="border:none;">
                   <el-form-item :label="`上限4 材料${i+1}`">
                     <el-select
+                    filterable
                       v-model="item.article"
                       placeholder="请选择"
                       style="width:200px;margin-right:100px"
@@ -286,7 +290,7 @@
             <el-col style="border:none;">
               上限5  所需材料
               <el-button @click="model.items5.push({})">
-                <i class="el-icon-plus"></i>添加技能
+                <i class="el-icon-plus"></i>添加上限材料
               </el-button>
               <el-col v-for="(item,i) in model.items5" :key="i">
                 <el-col style="border:none;">
