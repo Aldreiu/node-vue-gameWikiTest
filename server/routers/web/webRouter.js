@@ -1192,7 +1192,12 @@ router.get("/essays/:id", async (req, res) => {
 
 // 通过id找到对应的角色
 router.get("/characters/:id",async (req,res) =>{
-  const data = await Character.findById(req.params.id).lean()   // lean 显示成javascript形式 可以进行去添加字段
+  const data = await Character
+  .findById(req.params.id)
+  .populate('categories')
+  .populate('attribute')
+  .populate('race')
+  .lean()   // lean 显示成javascript形式 可以进行去添加字段
   res.send(data)
 })
 

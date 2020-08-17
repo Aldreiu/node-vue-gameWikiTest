@@ -12,6 +12,7 @@ const schema = new mongoose.Schema({
     }
 })
 
+// 虚拟是可以获取和设置的文档属性
 schema.virtual('newsList',{
     ref:'Essay',
     foreignField:'categories',

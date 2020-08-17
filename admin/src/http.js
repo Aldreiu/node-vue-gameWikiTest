@@ -29,6 +29,7 @@ http.interceptors.response.use(
   },
   (err) => {
     if (err.response.data.message) {
+      // element ui 的消息提示
       Vue.prototype.$message({
         type: "error",
         message: err.response.data.message,
