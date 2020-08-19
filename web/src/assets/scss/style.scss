@@ -49,6 +49,11 @@ $color in $colors {
   }
 }
 
+// padding
+.padding-center{
+  padding: 10px 10px;
+}
+
 // height
 .w-100 {
   width: 100%;
@@ -248,3 +253,66 @@ $type in $spacing-types {
 
 // Main  swiper-content
 .swiper-content {}
+
+
+
+.gbf-infobox{
+  border-radius: 10px;
+  border-width: 2px;
+  border-style: solid;
+  padding: 2px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+// fire 火
+.fire{
+
+  width: 100%;
+  
+  // height: 600px;
+
+  border-color: #ef5350;
+  background:#ffcdd2;
+  
+  .infobox-title{
+    text-shadow: 0 0 1px #b96161, 0 0 1px #b96161, 0 0 1px #b96161, 0 0 1px #b96161, 0 0 2px #b96161, 0 0 2px #b96161, 0 0 2px #b96161, 0 0 2px #b96161;
+    
+  }
+
+  .ec-2{
+    border-color: #98545a;
+    background: #fff1f2;
+    .title{
+      text-align: center;
+      // font-size: 14px;
+      margin: 3px 0 -3px;
+      padding: 1px px;
+      font-weight: bold;
+    }
+    .content{
+      background: #fdfaf5;
+      margin: 4px;
+      padding: 7px 10px;
+      border: 1px solid #000;
+      border-radius: 10px;
+    }
+  }
+
+  .gbf-infobox-section{
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 10px;
+    margin: 2px;
+    display: inline-block;
+    width: 100%;
+    &.infobox-title{
+      text-align:center;
+      color: #f2eee2;
+      font-weight: bold;
+      border: none;
+    }
+  }
+}
+

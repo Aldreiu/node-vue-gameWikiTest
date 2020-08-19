@@ -38,14 +38,41 @@
         </div>
         <div class="d-flex jc-between">
           <div>
-            HP<span class="hp mr-1">{{ model.hpandattack.hp}}</span>
-            攻击力<span class="attack">{{ model.hpandattack.attack}}</span>
+            HP <span class="hp mr-1 box-sum1">{{ model.hpandattack.hp}}</span>
+            攻击力 <span class="attack box-sum2">{{ model.hpandattack.attack}}</span>
           </div>
           <router-link
             to="/"
             tag="span"
             class="text-grey"
           >更多详情 &gt;</router-link>
+        </div>
+      </div>
+    </div>
+    <!-- top end -->
+    <div class="padding-center test ">
+      <div class="fire gbf-infobox">
+        <div class="gbf-infobox-section infobox-title">
+          <div class="name">基本信息</div>
+        </div>
+        <div class="gbf-infobox-section ec-2">
+          <div class="title">日文名</div>
+          <div class="content">2123</div>
+        </div>
+
+        <div class="gbf-infobox-section ec-2">
+          <div class="title">英文名</div>
+          <div class="content">2123</div>
+        </div>
+
+        <div class="gbf-infobox-section ec-2">
+          <div class="title">常用昵称</div>
+          <div class="content">2123</div>
+        </div>
+
+        <div class="gbf-infobox-section ec-2">
+          <div class="title">露莉亚笔记</div>
+          <div class="content">2123</div>
         </div>
       </div>
     </div>
@@ -75,6 +102,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.test {
+  background-color: white;
+
+  // border-color: red;
+}
+
 h2 {
   margin: 0;
 }
@@ -87,12 +120,28 @@ h2 {
     // background-color: black;
     background-position: top center;
 
-    .hp {
-      color: #3eb503;
+    .box-sum1 {
+      background-color: #3eb503;
+      padding: 3px;
+      border-radius: 4px;
+      text-shadow: 0px 0px 1px #150f0f, 0px 0px 1px #150f0f, 0px 0px 1px #150f0f,
+        0px 0px 2px #150f0f, 0px 0px 2px #150f0f, 0px 0px 2px #150f0f;
     }
-    .attack {
-      color: #ff5d25;
+
+    .box-sum2 {
+      background-color: #ff5d25;
+      padding: 3px;
+      border-radius: 4px;
+      text-shadow: 0px 0px 1px #150f0f, 0px 0px 1px #150f0f, 0px 0px 1px #150f0f,
+        0px 0px 2px #150f0f, 0px 0px 2px #150f0f, 0px 0px 2px #150f0f;
     }
+
+    // .hp {
+    //   color: #3eb503;
+    // }
+    // .attack {
+    //   color: #ff5d25;
+    // }
   }
   .text-grey {
     color: white;
