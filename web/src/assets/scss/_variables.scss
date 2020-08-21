@@ -15,7 +15,9 @@ $colors: ("primary": #ffe4b7,
     "grey-1": #c8c8c8,
     "grey": #999,
     "use-play": #3366cc,
-    "hone-swiper-info":#4b67af);
+    "hone-swiper-info":#4b67af,
+    "center-color":#f9f2e7,  // 人物详情主色调
+    );
     $border-color:map-get($map: $colors, $key: "light-1");
 
 // font-size

@@ -23,6 +23,11 @@ a {
   text-decoration: none;
 }
 
+h3{
+  margin: 0;
+}
+
+
 // 管理公共样式
 // 具体实现
 // colors
@@ -179,6 +184,20 @@ $type in $spacing-types {
   border: none;
   font-size: map-get($map: $font-sizes, $key: "sm") * $base-font-size;
   padding: 0.2rem, 0.6rem;
+
+  &.btn-lg{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    i{
+      color: map-get($map: $colors, $key: 'primary');
+      font-size: 1.5rem;
+      margin-right: 0.5rem;
+    }
+    background: map-get($map: $colors, $key: 'light');
+    border: 1px solid $border-color;
+    padding: 0.5rem;
+  }
 }
 
 // ===================== Main 主页上的样式 ============================
@@ -203,7 +222,7 @@ $type in $spacing-types {
   }
 
   .active {
-    border-bottom: 2px solid #fff;
+    border-bottom: 2px solid rgb(109, 107, 107);
   }
 }
 
@@ -266,38 +285,10 @@ $type in $spacing-types {
   flex-wrap: wrap;
   width: 100%;
 }
-// fire 火
-.fire{
 
-  width: 100%;
-  
-  // height: 600px;
-
-  border-color: #ef5350;
-  background:#ffcdd2;
-  
-  .infobox-title{
-    text-shadow: 0 0 1px #b96161, 0 0 1px #b96161, 0 0 1px #b96161, 0 0 1px #b96161, 0 0 2px #b96161, 0 0 2px #b96161, 0 0 2px #b96161, 0 0 2px #b96161;
-    
-  }
-
-  .ec-2{
-    border-color: #98545a;
-    background: #fff1f2;
-    .title{
-      text-align: center;
-      // font-size: 14px;
-      margin: 3px 0 -3px;
-      padding: 1px px;
-      font-weight: bold;
-    }
-    .content{
-      background: #fdfaf5;
-      margin: 4px;
-      padding: 7px 10px;
-      border: 1px solid #000;
-      border-radius: 10px;
-    }
+@mixin content-color {
+  .gbf-infobox-section.ec-2-col-2{
+    width: calc(50% - 4px);
   }
 
   .gbf-infobox-section{
@@ -316,3 +307,162 @@ $type in $spacing-types {
   }
 }
 
+// ec-2 内容复用样式
+@mixin ec-2-content {
+  .title{
+    text-align: center;
+    // font-size: 14px;
+    margin: 3px 0 -3px;
+    padding: 1px px;
+    font-weight: bold;
+  }
+  .content{
+    background: #fdfaf5;
+    margin: 4px;
+    padding: 7px 10px;
+    border: 1px solid #000;
+    border-radius: 10px;
+  }
+}
+
+// fire 火
+.fire{
+
+  width: 100%;
+  
+  // height: 600px;
+
+  border-color: #ef5350;
+  background:#ffcdd2;
+  
+  .infobox-title{
+    text-shadow: 0 0 1px #b96161, 0 0 1px #b96161, 0 0 1px #b96161, 0 0 1px #b96161, 0 0 2px #b96161, 0 0 2px #b96161, 0 0 2px #b96161, 0 0 2px #b96161;
+    
+  }
+
+  .ec-2{
+    border-color: #98545a;
+    background: #fff1f2;
+    @include ec-2-content;
+  }
+
+  @include content-color;
+}
+
+// 水
+
+.water{
+
+  width: 100%;
+  
+  // height: 600px;
+
+  border-color: #42a5f5;
+  background:#bbdefb;
+  
+  .infobox-title{
+    text-shadow: 0 0 1px #4b787f, 0 0 1px #4b787f, 0 0 1px #4b787f, 0 0 1px #4b787f, 0 0 2px #4b787f, 0 0 2px #4b787f, 0 0 2px #4b787f, 0 0 2px #4b787f;
+    
+  }
+
+  .ec-2{
+    border-color: #25547b;
+    background: #e9f5ff;
+    @include ec-2-content;
+  }
+
+  @include content-color;
+}
+
+// 土
+.earth{
+
+  width: 100%;
+  
+  // height: 600px;
+
+  border-color: #8d6e63;
+  background:#dcbeb3;
+  
+  .infobox-title{
+    text-shadow: 0 0 1px #8c695d, 0 0 1px #8c695d, 0 0 1px #8c695d, 0 0 1px #8c695d, 0 0 2px #8c695d, 0 0 2px #8c695d, 0 0 2px #8c695d, 0 0 2px #8c695d;
+    
+  }
+
+  .ec-2{
+    border-color: #735f58;
+    background: #fdece6;
+    @include ec-2-content;
+  }
+
+  @include content-color;
+}
+
+// 风
+.wind{
+
+  width: 100%;
+  
+  // height: 600px;
+
+  border-color: #66bb6a;
+  background:#c8e6c9;
+  
+  .infobox-title{
+    text-shadow: 0 0 1px #5b7f5d, 0 0 1px #5b7f5d, 0 0 1px #5b7f5d, 0 0 1px #5b7f5d, 0 0 2px #5b7f5d, 0 0 2px #5b7f5d, 0 0 2px #5b7f5d, 0 0 2px #5b7f5d;
+  }
+
+  .ec-2{
+    border-color: #5a825b;
+    background: #f4fff4;
+    @include ec-2-content;
+  }
+
+  @include content-color;
+}
+
+// 光
+.light{
+
+  width: 100%;
+  
+  // height: 600px;
+
+  border-color: #ffc158;
+  background:#ffecb3;
+  
+  .infobox-title{
+    text-shadow: 0 0 1px #b98939, 0 0 1px #b98939, 0 0 1px #b98939, 0 0 1px #b98939, 0 0 2px #b98939, 0 0 2px #b98939, 0 0 2px #b98939, 0 0 2px #b98939;
+  }
+
+  .ec-2{
+    border-color: #bb8e42;
+    background: #fff8e5;
+    @include ec-2-content;
+  }
+
+  @include content-color;
+}
+
+// 暗
+.dark{
+
+  width: 100%;
+  
+  // height: 600px;
+
+  border-color: #7e57c2;
+  background:#d1c4e9;
+  
+  .infobox-title{
+    text-shadow: 0 0 1px #55378a, 0 0 1px #55378a, 0 0 1px #55378a, 0 0 1px #55378a, 0 0 2px #55378a, 0 0 2px #55378a, 0 0 2px #55378a, 0 0 2px #55378a;
+  }
+
+  .ec-2{
+    border-color: #5a4384;
+    background: #f3ecff;
+    @include ec-2-content;
+  }
+
+  @include content-color;
+}
