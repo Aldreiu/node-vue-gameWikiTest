@@ -122,14 +122,11 @@
     </div>
     <!-- content end  -->
 
-    <div
-      class="bg-center-color"
-      style="height:600px"
-    >
+    <div class="bg-center-color">
       <div class="p-2">
-        <div class="nav d-flex jc-around pt-3 pb-2 border-bottom">
+        <div class="nav d-flex jc-around pt-3 pb-2 border-bottom bg-grey">
           <div class="nav-item active">
-            <div class="nav-link">角色初识</div>
+            <div class="nav-link">角色技能</div>
           </div>
           <div class="nav-item">
             <div class="nav-link">上限突破材料</div>
@@ -138,7 +135,7 @@
       </div>
       <swiper>
         <swiper-slide>
-          <div class="border-bottom">
+          <div class="border-bottom pb-3">
             <div class="p-3 bg-white d-flex">
               <router-link
                 tag="button"
@@ -172,7 +169,10 @@
                   :class="{active:currentSkillIndex === i}"
                 >
               </div>
-              <div v-if="currentSkill" class="px-3 pb-3">
+              <div
+                v-if="currentSkill"
+                class="px-3 pb-3"
+              >
                 <div class="d-flex pt-4">
                   <h3>{{ currentSkill.name }}</h3>
                   <span>
@@ -196,7 +196,18 @@
           <!-- skills -->
 
         </swiper-slide>
-        <swiper-slide></swiper-slide>
+        <!-- 上限材料 -->
+        <swiper-slide>
+          <div>
+            <m-card
+              icon="role"
+              title="上限突破1"
+              plain
+            >
+
+            </m-card>
+          </div>
+        </swiper-slide>
       </swiper>
     </div>
   </div>
@@ -243,11 +254,17 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import "../assets/scss/variables";
 
-.active{
-  border: 2px solid map-get($map: $colors, $key: 'primary');
+.icon {
+  border: 2px solid transparent;
+}
+
+.skills {
+  .active {
+    border: 2px solid map-get($map: $colors, $key: "primary");
+  }
 }
 
 .skill-i-1 {
