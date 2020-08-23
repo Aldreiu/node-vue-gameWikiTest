@@ -1,34 +1,23 @@
 <template>
   <div class="home">
     <!-- swiper start -->
-    <swiper
-      ref="mySwiper"
-      :options="swiperOptions"
-    >
-      <swiper-slide><img
-          class="w-100 hsi"
-          src="../../src/assets/images/-mcuihQ5-cjq8ZpT3cS15o-rp.jpg"
-          alt=""
-        ></swiper-slide>
-      <swiper-slide><img
-          class="w-100 hsi"
-          src="../../src/assets/images/fkQ5-33d2ZdT3cSp0-go.jpg"
-          alt=""
-        ></swiper-slide>
-      <swiper-slide><img
-          class="w-100 hsi"
-          src="../../src/assets/images/knq20200309160810.png"
-          alt=""
-        ></swiper-slide>
-      <div
-        class="swiper-pagination pagination-home text-right pr-3"
-        slot="pagination"
-      ></div>
+    <swiper ref="mySwiper" :options="swiperOptions">
+      <swiper-slide>
+        <img class="w-100 hsi" src="../../src/assets/images/-mcuihQ5-cjq8ZpT3cS15o-rp.jpg" alt />
+      </swiper-slide>
+      <swiper-slide>
+        <img class="w-100 hsi" src="../../src/assets/images/fkQ5-33d2ZdT3cSp0-go.jpg" alt />
+      </swiper-slide>
+      <swiper-slide>
+        <img class="w-100 hsi" src="../../src/assets/images/knq20200309160810.png" alt />
+      </swiper-slide>
+      <div class="swiper-pagination pagination-home text-right pr-3" slot="pagination"></div>
     </swiper>
     <!-- swiper end -->
     <!-- nav-icon start -->
-    <div class="nav-icons bg-white  mt-2  text-center pt-3 text-grey">
-      <div class="d-flex flex-wrap">
+    <div class="nav-icons bg-white mt-2 text-center pt-3 text-grey">
+      <div class="d-flex" :class="offShrink ===true? 'flex-wrap' : ''" style="overflow:auto">
+        <!-- flex-shrink让其flex布局不收缩 这里是弹性盒子项目大于容器  想让项目保持之前大小 -->
         <div class="nav-item mb-3">
           <i class="iconfont icon-ziliao fs-xl"></i>
           <div>资料站</div>
@@ -70,8 +59,8 @@
           <div>基本介绍</div>
         </div>
       </div>
-      <div class="bg-light py-1 fs-xs">
-        <i class="sprite sprite-arrow"></i>
+      <div class="bg-light py-1 fs-xs" @click="offShrink = !offShrink">
+        <i class="sprite" :class="offShrink ===true? 'sprite-arrow' : 'iconfont icon-xiahua'"></i>
         收起
       </div>
     </div>
@@ -106,14 +95,10 @@
             </div>
           </swiper-slide>
         </swiper>
-    </m-card> -->
+    </m-card>-->
 
     <!-- 新闻资讯 -->
-    <m-list-card
-      icon="news"
-      title="新闻资讯"
-      :categories="newsCats"
-    >
+    <m-list-card icon="news" title="新闻资讯" :categories="newsCats">
       <template #items="{category}">
         <router-link
           tag="div"
@@ -123,20 +108,15 @@
           :key="i"
         >
           <span class="text-dark-1 pl-1">[{{ item.categoryName }}]</span>
-          <span class="px-2"> | </span>
+          <span class="px-2">|</span>
           <span class="flex-1 text-over text-dark">{{ item.title }}</span>
           <span class="text-dark pr-2">{{ item.createdAt | date }}</span>
         </router-link>
       </template>
-
     </m-list-card>
 
     <!-- 角色列表 -->
-    <m-list-card
-      icon="role"
-      title="角色列表"
-      :categories="characterCats"
-    >
+    <m-list-card icon="role" title="角色列表" :categories="characterCats">
       <template #items="{category}">
         <div class="d-flex flex-wrap">
           <router-link
@@ -147,58 +127,54 @@
             v-for="(item,i) in category.charactersList"
             :key="i"
           >
-            <img
-              class="w-100"
-              :src="item.avatar"
-              alt=""
-            >
+            <img class="w-100" :src="item.avatar" alt />
             <div class="text-over w-100">{{ item.name }}</div>
           </router-link>
         </div>
       </template>
-
     </m-list-card>
   </div>
 </template>
 
 <script>
-import dayjs from 'dayjs'
+import dayjs from "dayjs";
 export default {
   filters: {
     date(val) {
-      return dayjs(val).format('MM/DD')
-    }
+      return dayjs(val).format("MM/DD");
+    },
   },
-  name: 'Home',
+  name: "Home",
   data() {
     return {
       swiperOptions: {
         pagination: {
-          el: '.swiper-pagination',
+          el: ".swiper-pagination",
           clickable: true,
-
         },
         autoplay: true,
         // Some Swiper option/callback...
       },
+      // 控制收缩
+      offShrink: true,
 
       // 新闻列表数据
       newsCats: [],
       // 角色列表数据
-      characterCats: []
-    }
+      characterCats: [],
+    };
   },
   methods: {
     // 新闻列表数据
     async fetchNesList() {
-      const res = await this.$http.get('news/list');
+      const res = await this.$http.get("news/list");
       this.newsCats = res.data;
     },
     // 角色列表数据
     async fetchCharacterList() {
-      const res = await this.$http.get('characters/list');
+      const res = await this.$http.get("characters/list");
       this.characterCats = res.data;
-    }
+    },
   },
   created() {
     this.fetchNesList();
@@ -206,14 +182,14 @@ export default {
   },
   computed: {
     swiper() {
-      return this.$refs.mySwiper.$swiper
-    }
+      return this.$refs.mySwiper.$swiper;
+    },
   },
   mounted() {
-    console.log('Current Swiper instance object', this.swiper)
+    console.log("Current Swiper instance object", this.swiper);
     // this.swiper.slideTo(3, 1000, false)
-  }
-}
+  },
+};
 </script>
 
 <style lang="scss">
@@ -237,6 +213,7 @@ export default {
   .nav-item {
     width: 25%;
     border-left: 1px solid $border-color;
+    flex-shrink: 0;
     // 复习 4n+1 意思是 n/4 余1  就使用效果
     &:nth-child(4n + 1) {
       border-left: none;

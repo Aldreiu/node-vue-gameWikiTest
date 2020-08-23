@@ -44,6 +44,7 @@
 1.定义常用的边距定义(margin,padding) 配置好布局
 1.定义轮播图(vue-swiper)
 1.使用字体图标(可以使用阿里图标 也可使用 iconfont)
+  1.1资料站部分   想让收起   利用flex布局  当项目大于盒子容器  使用flex-shrink让项目不再收缩 在控制外层大容器
 1.卡片组件(card)
 1.列表卡组件(list-card,nav,swiper)
 1.首页新闻资讯

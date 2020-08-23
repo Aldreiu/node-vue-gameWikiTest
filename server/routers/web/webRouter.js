@@ -1197,6 +1197,11 @@ router.get("/characters/:id",async (req,res) =>{
   .populate('categories')
   .populate('attribute')
   .populate('race')
+  .populate('items1.article')
+  .populate('items2.article')
+  .populate('items3.article')
+  .populate('items4.article')
+  .populate('items5.article')
   .lean()   // lean 显示成javascript形式 可以进行去添加字段
   res.send(data)
 })

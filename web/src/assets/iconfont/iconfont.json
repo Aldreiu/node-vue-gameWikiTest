@@ -6,6 +6,20 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "6129092",
+      "name": "53下滑",
+      "font_class": "xiahua",
+      "unicode": "e770",
+      "unicode_decimal": 59248
+    },
+    {
+      "icon_id": "654072",
+      "name": "上滑",
+      "font_class": "shanghua",
+      "unicode": "e66a",
+      "unicode_decimal": 58986
+    },
+    {
       "icon_id": "7152340",
       "name": "menu",
       "font_class": "menu",
