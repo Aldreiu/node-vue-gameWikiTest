@@ -16,6 +16,11 @@ const dbs = require("./plugins/db");
 // 托管静态文件
 app.use("/uploads", express.static(__dirname + "/uploads"));
 
+app.use("/admin", express.static(__dirname + "/admin"));
+app.use("/", express.static(__dirname + "/web"));
+
+
+
 // 引入子路由的接口方法
 const routesAdmin = require("./routers/admin");
 const routesWeb = require("./routers/web")
