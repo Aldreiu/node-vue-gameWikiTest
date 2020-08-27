@@ -30,7 +30,10 @@ module.exports = (app) => {
         // express本身获取不了上传文件数据
         // 使用multer来处理上传文件
         const icon = req.file
-        icon.url = `http://localhost:5000/uploads/${icon.filename}`
+        // 本地地址
+        // icon.url = `http://localhost:5000/uploads/${icon.filename}`
+        icon.url = `http://www.aldreiu.xyz/${icon.filename}` //线上地址
+
         res.send(icon)
     })
 
