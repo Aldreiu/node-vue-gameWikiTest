@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_","ns":"node-vue-gamewiki.essaries"}],"uuid":"5242e8cfb9584cc6afc2caf70bd4299e"}
