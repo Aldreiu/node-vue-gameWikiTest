@@ -64,7 +64,9 @@ router.get("/", async (req, res) => {
 
 // 创建分类
 router.post("/", async (req, res) => {
+    
     const model = await req.Model.create(req.body)
+    // .populate('categories')
     res.send(model);
 })
 

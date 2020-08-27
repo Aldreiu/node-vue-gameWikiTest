@@ -133,6 +133,10 @@
         </div>
       </template>
     </m-list-card>
+
+    <m-card icon="news" title="公告">
+      <p>此项目用于练习</p>
+    </m-card>
   </div>
 </template>
 

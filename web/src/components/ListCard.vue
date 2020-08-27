@@ -10,7 +10,7 @@
         </div>
       </div>
       <!-- 是swiper配置选项 自动高度 -->
-      <swiper ref="list" @slideChange="()=>active = swiper.activeIndex" :options="{autoHeight:true}">
+      <swiper ref="list" @slideChange="()=>active = swiper.activeIndex"  :options="swiperOptions">
         <swiper-slide
           v-for="(category,i) in categories"
           :key="i"
@@ -32,6 +32,15 @@ export default {
     data() {
         return {
             active:0,
+            // swiper设置
+            swiperOptions:{
+             autoHeight:true,
+            //  坑
+            //  swiper使用了autoHeight自动高度  因为根据网络 图片显示完之前 swiper先执行完成了 所以第一个 热门就不会显示全 
+            // 监听器 当swiper样式发生变化 他就回去更新
+             observer:true,
+             observeParents:true
+            }
         }
     },
     computed: {

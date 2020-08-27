@@ -7,7 +7,7 @@
     >
       <el-form-item label="父级分类">
         <el-select
-          v-model="model.parent.name"
+          v-model="model.parent._id"
           placeholder="请选择父级分类"
         >
           <el-option
@@ -38,7 +38,8 @@ export default {
   data() {
     return {
       model: {
-        parent:{}
+        parent:{},
+        name:''
       },
       parents: []
     }
