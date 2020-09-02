@@ -2,15 +2,17 @@
   <div class="home">
     <!-- swiper start -->
     <swiper ref="mySwiper" :options="swiperOptions">
-      <swiper-slide>
-        <img class="w-100 hsi" src="../../src/assets/images/-mcuihQ5-cjq8ZpT3cS15o-rp.jpg" alt />
+      <swiper-slide v-for="(item,i) in ads.items" :key="i">
+        <router-link :to="item.url">
+          <img class="w-100 hsi" :src="item.image" alt />
+        </router-link>
       </swiper-slide>
-      <swiper-slide>
+      <!-- <swiper-slide>
         <img class="w-100 hsi" src="../../src/assets/images/fkQ5-33d2ZdT3cSp0-go.jpg" alt />
       </swiper-slide>
       <swiper-slide>
         <img class="w-100 hsi" src="../../src/assets/images/knq20200309160810.png" alt />
-      </swiper-slide>
+      </swiper-slide> -->
       <div class="swiper-pagination pagination-home text-right pr-3" slot="pagination"></div>
     </swiper>
     <!-- swiper end -->
@@ -166,6 +168,8 @@ export default {
       newsCats: [],
       // 角色列表数据
       characterCats: [],
+      // home广告数据
+      ads:{}
     };
   },
   methods: {
@@ -179,10 +183,18 @@ export default {
       const res = await this.$http.get("characters/list");
       this.characterCats = res.data;
     },
+    // 获取 首页广告
+    async fetchHomeAd(){
+      const res = await this.$http.get("ads/home");
+      console.log(res);
+      this.ads = res.data;
+    }
   },
   created() {
+    this.fetchHomeAd();
     this.fetchNesList();
     this.fetchCharacterList();
+    
   },
   computed: {
     swiper() {

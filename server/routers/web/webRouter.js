@@ -6,6 +6,7 @@ const Category = require("../../models/Category");
 const FatherCategory = require("../../models/FatherCategory");
 const Character = require("../../models/Character");
 const Essay = require("../../models/Essay");
+const Ad = require("../../models/Ad");
 
 // 导入新闻
 router.get("/news/init", async (req, res) => {
@@ -1191,19 +1192,28 @@ router.get("/essays/:id", async (req, res) => {
 });
 
 // 通过id找到对应的角色
-router.get("/characters/:id",async (req,res) =>{
+router.get("/characters/:id", async (req, res) => {
   const data = await Character
-  .findById(req.params.id)
-  .populate('categories')
-  .populate('attribute')
-  .populate('race')
-  .populate('items1.article')
-  .populate('items2.article')
-  .populate('items3.article')
-  .populate('items4.article')
-  .populate('items5.article')
-  .lean()   // lean 显示成javascript形式 可以进行去添加字段
+    .findById(req.params.id)
+    .populate('categories')
+    .populate('attribute')
+    .populate('race')
+    .populate('items1.article')
+    .populate('items2.article')
+    .populate('items3.article')
+    .populate('items4.article')
+    .populate('items5.article')
+    .lean() // lean 显示成javascript形式 可以进行去添加字段
   res.send(data)
-})
+});
+
+// 广告位
+router.get("/ads/home", async (req, res) => {
+  const data = await Ad.findOne({
+    name: "首页"
+  })
+  res.send(data)
+});
+
 
 module.exports = router;

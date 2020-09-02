@@ -1,1 +1,1 @@
-{"options":{},"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_","ns":"node-vue-gamewiki.characters"}],"uuid":"5ee86c24cacb4ac29b99c195efdd633b"}
+{"options":{},"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_","ns":"node-vue-gamewiki.characters"}],"uuid":"91b9f4fbb83b47b6b773583e469e5221"}
