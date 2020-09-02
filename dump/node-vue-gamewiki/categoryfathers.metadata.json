@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_","ns":"node-vue-gamewiki.categoryfathers"}],"uuid":"f5ca59a19b754e55b5201f0f288a0938"}
