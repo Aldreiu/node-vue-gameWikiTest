@@ -21,7 +21,7 @@
                 :action="$http.defaults.baseURL + '/upload'"
                 :show-file-list="false"
                 :on-success="res => $set(item,'image',res.url)"
-                name="file"
+                name="icon"
               >
                 <img v-if="item.image" :src="item.image" class="adimg" />
                 <i v-else class="el-icon-plus avatar-uploader-icon"></i>
