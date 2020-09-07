@@ -2,7 +2,7 @@
   <div>
     <div class="topbar bg-grey-1 py-2 px-4 d-flex ai-center">
       <img
-        src="http://www.aldreiu.xyz/uploads/5f55bde644d81b03d5ea9871"
+        src="http://localhost:5000/uploads/5f55bde644d81b03d5ea9871"
         alt=""
         height="30px"
       >
