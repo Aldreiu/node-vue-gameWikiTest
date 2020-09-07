@@ -31,8 +31,8 @@ module.exports = (app) => {
         // 使用multer来处理上传文件
         const icon = req.file
         // 本地地址
-        // icon.url = `http://localhost:5000/uploads/${icon.filename}`
-        icon.url = `http://www.aldreiu.xyz/uploads/${icon.filename}` //线上地址
+        icon.url = `http://localhost:5000/uploads/${icon.filename}`
+        // icon.url = `http://www.aldreiu.xyz/uploads/${icon.filename}` //线上地址
 
         res.send(icon)
     })
