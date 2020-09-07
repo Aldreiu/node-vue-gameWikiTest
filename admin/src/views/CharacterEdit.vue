@@ -18,7 +18,7 @@
               :action="$http.defaults.baseURL + '/upload'"
               :show-file-list="false"
               :on-success="afterUpload"
-              name="file"
+              name="icon"
             >
               <img v-if="model.avatar" :src="model.avatar" class="avatar" />
               <i v-else class="el-icon-plus avatar-uploader-icon"></i>
@@ -31,7 +31,7 @@
               :action="uploadUrl"
               :show-file-list="false"
               :on-success="res=> $set(model,'drawing',res.url)"
-              name="file"
+              name="icon"
             >
               <img v-if="model.drawing" :src="model.drawing" class="avatar" />
               <i v-else class="el-icon-plus avatar-uploader-icon"></i>
@@ -136,7 +136,7 @@
                   :action="$http.defaults.baseURL + '/upload'"
                   :show-file-list="false"
                   :on-success="res => $set(item,'icon',res.url)"
-                  name="file"
+                  name="icon"
                 >
                   <img v-if="item.icon" :src="item.icon" class="avatar" />
                   <i v-else class="el-icon-plus avatar-uploader-icon"></i>

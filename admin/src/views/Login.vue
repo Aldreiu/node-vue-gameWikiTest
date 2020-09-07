@@ -41,6 +41,11 @@
         </el-form-item>
       </el-form>
     </el-card>
+    <div class="footer-icp">
+      <a href="http://beian.miit.gov.cn">
+        <span>鄂ICP备2020016395号-1</span>
+      </a>
+    </div>
   </div>
 </template>
 
@@ -75,6 +80,17 @@ export default {
 </script>
 
 <style scoped>
+.footer-icp{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+
+}
+.footer-icp a{
+  text-decoration: none;
+  color: gay;
+}
 .login-container {
   width: 100%;
   height: 100%;

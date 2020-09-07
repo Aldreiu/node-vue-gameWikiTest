@@ -15,7 +15,7 @@
           :action="uploadUrl"
           :show-file-list="false"
           :on-success="afterUpload"
-          name="file"
+          name="icon"
         >
           <img
             v-if="model.icon"
