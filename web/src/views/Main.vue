@@ -2,7 +2,7 @@
   <div>
     <div class="topbar bg-grey-1 py-2 px-4 d-flex ai-center">
       <img
-        src="http://localhost:5000/uploads/5f55bde644d81b03d5ea9871"
+        src="../../public/site_avatar_gbf_l.png"
         alt=""
         height="30px"
       >
