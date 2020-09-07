@@ -139,6 +139,12 @@
     <m-card icon="news" title="公告">
       <p>此项目用于练习</p>
     </m-card>
+    <!-- 放备案号 -->
+    <div class="bg-drak text-center p-2">
+      <a href="http://beian.miit.gov.cn">
+        <span>鄂ICP备2020016395号-1</span>
+      </a>
+    </div>
   </div>
 </template>
 
