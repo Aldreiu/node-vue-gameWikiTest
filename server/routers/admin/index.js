@@ -26,13 +26,13 @@ module.exports = (app) => {
     const upload = multer({
         dest: __dirname + '/../../uploads'
     })
-    app.post('/admin/api/upLoad', authMiddleware(), upload.single('icon'), async (req, res) => {
+    app.post('/admin/api/upload', authMiddleware(), upload.single('icon'), async (req, res) => {
         // express本身获取不了上传文件数据
         // 使用multer来处理上传文件
-        const icon = req.icon
+        const icon = req.file
         // 本地地址
-        // icon.url = `http://localhost:5000/uploads/${icon.filename}`
-        icon.url = `http://www.aldreiu.xyz/uploads/${icon.filename}` //线上地址
+        icon.url = `http://localhost:5000/uploads/${icon.filename}`
+        // icon.url = `http://www.aldreiu.xyz/uploads/${icon.filename}` //线上地址
 
         res.send(icon)
     })
